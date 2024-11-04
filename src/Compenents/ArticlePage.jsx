@@ -1,14 +1,13 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState } from "react"
 import { fecthArticleById, patchVoteCount } from "../api"
-import { CurrentArticleContext } from "../Contexts/CurrentArticleContext"
 
 
-export default function ArticlePage({article}) {
-    const { currentArticle, setCurrentArticle } = useContext(CurrentArticleContext)
+
+export default function ArticlePage({currentArticle, setCurrentArticle}) {
     const [updateVotes, setUpdateVotes] = useState(false)
 
     useEffect(() => {
-        fecthArticleById(article.article_id).then((response) => {
+        fecthArticleById(currentArticle.article_id).then((response) => {
             setCurrentArticle(response)
             setUpdateVotes(false)
         })
@@ -16,8 +15,10 @@ export default function ArticlePage({article}) {
 
     function changeVotes(id, num) {
         const voteChange = { inc_vote: num }
+        if (!(currentArticle.votes < 1 && num < 0)) {
         patchVoteCount(id, voteChange)
         setUpdateVotes(true)
+        }
     }
     
   return (
