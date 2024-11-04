@@ -1,9 +1,7 @@
-import { useContext } from "react"
 import { Link } from "react-router-dom"
-import { CurrentArticleContext } from "../Contexts/CurrentArticleContext"
 
-export default function ArticleCard({article}) {
-    const { setCurrentArticle } = useContext(CurrentArticleContext)
+
+export default function ArticleCard({article, setCurrentArticle}) {
 
   return (
     <li>
