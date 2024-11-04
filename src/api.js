@@ -5,7 +5,8 @@ const api = axios.create({
   });
   
 function fetchArticles() {
-return api.get(`/articles`).then((response) => {
+return api.get(`/articles`)
+.then((response) => {
     return response.data.articles
 })
 .catch((err) => {
@@ -14,14 +15,46 @@ return api.get(`/articles`).then((response) => {
 }
 
 function fecthArticleById(id) {
-    return api.get(`/articles/${id}`).then((response) => {
+    return api.get(`/articles/${id}`)
+    .then((response) => {
         return response.data.article
     })
 }
 
 function patchVoteCount(id, votesObj) {
-    return api.patch(`/articles/${id}`, votesObj).then((response) => {
+    return api.patch(`/articles/${id}`, votesObj)
+    .then((response) => {
         return response
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+function fetchComments(id) {
+    return api.get(`/articles/${id}/comments`)
+    .then((response) => {
+        return response.data.comments
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+function patchCommentsVoteCount(id, votesObj) {
+    return api.patch(`/comments/${id}`, votesObj)
+    .then((response) => {
+        return response
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
+function fetchCommentById(id) {
+    return api.get(`/comments/${id}`)
+    .then((response) => {
+        return response.data.comment
     })
     .catch((err) => {
         console.log(err)
@@ -31,5 +64,8 @@ function patchVoteCount(id, votesObj) {
 export {
     fetchArticles,
     fecthArticleById,
-    patchVoteCount
+    patchVoteCount,
+    fetchComments,
+    patchCommentsVoteCount,
+    fetchCommentById
 }

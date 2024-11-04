@@ -1,23 +1,24 @@
 import { useEffect, useState } from "react"
 import { fecthArticleById, patchVoteCount } from "../api"
+import CommentList from "./CommentList"
 
 
 
 export default function ArticlePage({currentArticle, setCurrentArticle}) {
-    const [updateVotes, setUpdateVotes] = useState(false)
+    const [updateArticleVotes, setUpdateArticleVotes] = useState(false)
 
     useEffect(() => {
         fecthArticleById(currentArticle.article_id).then((response) => {
             setCurrentArticle(response)
-            setUpdateVotes(false)
+            setUpdateArticleVotes(false)
         })
-    }, [updateVotes])
+    }, [updateArticleVotes])
 
-    function changeVotes(id, num) {
+    function changeArticleVotes(id, num) {
         const voteChange = { inc_vote: num }
         if (!(currentArticle.votes < 1 && num < 0)) {
         patchVoteCount(id, voteChange)
-        setUpdateVotes(true)
+        setUpdateArticleVotes(true)
         }
     }
     
@@ -30,12 +31,14 @@ export default function ArticlePage({currentArticle, setCurrentArticle}) {
             <div>
                 <label>Total votes: {currentArticle.votes} &nbsp; </label>
                 <button onClick={() => {
-                    changeVotes(currentArticle.article_id, 1)
+                    changeArticleVotes(currentArticle.article_id, 1)
                 }}>⬆️</button>
                 <button onClick={() => {
-                    changeVotes(currentArticle.article_id, -1)
+                    changeArticleVotes(currentArticle.article_id, -1)
                 }}>⬇️</button>  
             </div>
+        <p>Comments</p>
+        <CommentList currentArticle={currentArticle}/>
     </div>
   )
 }
