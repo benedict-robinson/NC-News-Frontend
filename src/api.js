@@ -19,7 +19,17 @@ function fecthArticleById(id) {
     })
 }
 
+function patchVoteCount(id, votesObj) {
+    return api.patch(`/articles/${id}`, votesObj).then((response) => {
+        return response
+    })
+    .catch((err) => {
+        console.log(err)
+    })
+}
+
 export {
     fetchArticles,
-    fecthArticleById
+    fecthArticleById,
+    patchVoteCount
 }

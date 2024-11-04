@@ -14,7 +14,7 @@ export const CurrentArticleProvider = ({ children }) => {
     sessionStorage.setItem("currentArticle", JSON.stringify(currentArticle))
   }, [currentArticle])
 
-console.log(currentArticle)
+
   return (
     <CurrentArticleContext.Provider value={{currentArticle, setCurrentArticle}}>
       {children}
