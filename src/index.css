@@ -68,7 +68,7 @@ ul {
   list-style-type: none;
 }
 
-button {
+ button {
   border-radius: 8px;
   border: 1px solid rgb(223, 149, 149);
   padding: 0.6em 1.2em;
@@ -82,9 +82,10 @@ button {
 button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+
+.button-pressed{
   outline: 4px auto -webkit-focus-ring-color;
+  background-color: #cbceff;
 }
 
 @media (prefers-color-scheme: light) {
@@ -98,4 +99,4 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
-}
+} 
