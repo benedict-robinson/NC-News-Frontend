@@ -6,10 +6,18 @@ import { useEffect, useState } from "react";
 import { fetchArticles } from '../api';
 
 export default function StateManager() {
+    const [isLoading, setIsLoading] = useState(true)
+
     const [articles, setArticles] = useState([]);
     useEffect(() => {
             fetchArticles().then((response) => {
                 setArticles(response)
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+            .finally(() => {
+                setIsLoading(false)
             })
         }, [])
 
@@ -27,9 +35,9 @@ export default function StateManager() {
   return (
     <div>
     <Routes>
-        <Route path="/" element={<Home articles={articles} setCurrentArticle={setCurrentArticle}/>} />
+        <Route path="/" element={<Home articles={articles} setCurrentArticle={setCurrentArticle} isLoading={isLoading}/>} />
         <Route path="/topics" element={<Topics />} />
-        <Route path={`/article/${currentArticle.article_id}`} element={<ArticlePage currentArticle={currentArticle} setCurrentArticle={setCurrentArticle}/>}/>
+        <Route path={`/article/${currentArticle.article_id}`} element={<ArticlePage currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} isLoading={isLoading} setIsloading={setIsLoading}/>}/>
     </Routes>
     </div>
   )
