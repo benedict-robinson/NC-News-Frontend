@@ -9,9 +9,6 @@ return api.get(`/articles`)
 .then((response) => {
     return response.data.articles
 })
-.catch((err) => {
-    console.log(err)
-});
 }
 
 function fecthArticleById(id) {
@@ -26,18 +23,12 @@ function patchVoteCount(id, votesObj) {
     .then((response) => {
         return response
     })
-    .catch((err) => {
-        console.log(err)
-    })
 }
 
 function fetchComments(id) {
     return api.get(`/articles/${id}/comments`)
     .then((response) => {
         return response.data.comments
-    })
-    .catch((err) => {
-        console.log(err)
     })
 }
 
@@ -46,18 +37,12 @@ function patchCommentsVoteCount(id, votesObj) {
     .then((response) => {
         return response
     })
-    .catch((err) => {
-        console.log(err)
-    })
 }
 
 function fetchCommentById(id) {
     return api.get(`/comments/${id}`)
     .then((response) => {
         return response.data.comment
-    })
-    .catch((err) => {
-        console.log(err)
     })
 }
 
