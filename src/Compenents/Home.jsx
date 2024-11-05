@@ -1,8 +1,24 @@
 import ArticlesList from "./ArticlesList";
 import "../CSS/loader.css"
+import { useEffect, useState } from "react";
+import { fetchArticles } from "../api";
 
 
-export default function Home({articles, setCurrentArticle, isLoading}) {
+export default function Home() {
+  const [isLoading, setIsLoading] = useState(true)
+
+  const [articles, setArticles] = useState([]);
+  useEffect(() => {
+          fetchArticles().then((response) => {
+              setArticles(response)
+          })
+          .catch((err) => {
+              console.log(err)
+          })
+          .finally(() => {
+              setIsLoading(false)
+          })
+      }, [])
 
   if (isLoading) {
     return (
@@ -12,7 +28,7 @@ export default function Home({articles, setCurrentArticle, isLoading}) {
 
   return (
     <>
-    <ArticlesList articles={articles} setCurrentArticle={setCurrentArticle}/>
+    <ArticlesList articles={articles}/>
     </>
   )
 }

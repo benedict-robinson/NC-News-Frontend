@@ -1,15 +1,19 @@
 import { useEffect, useState } from "react"
 import { fecthArticleById, patchVoteCount } from "../api"
 import CommentList from "./CommentList"
+import { useParams } from "react-router-dom"
 
 
 
-export default function ArticlePage({currentArticle, setCurrentArticle, isLoading, setIsloading}) {
+export default function ArticlePage() {
     const [updateArticleVotes, setUpdateArticleVotes] = useState(false)
+    const [currentArticle, setCurrentArticle] = useState({})
+    const [isLoading, setIsLoading] = useState(true)
+    const { article_id } = useParams()
 
     useEffect(() => {
-        setIsloading(true)
-        fecthArticleById(currentArticle.article_id).then((response) => {
+        setIsLoading(true)
+        fecthArticleById(article_id).then((response) => {
             setCurrentArticle(response)
             setUpdateArticleVotes(false)
         })
@@ -17,7 +21,7 @@ export default function ArticlePage({currentArticle, setCurrentArticle, isLoadin
             console.log(err)
         })
         .finally(() => {
-            setIsloading(false)
+            setIsLoading(false)
         })
     }, [updateArticleVotes])
 
@@ -25,6 +29,9 @@ export default function ArticlePage({currentArticle, setCurrentArticle, isLoadin
         const voteChange = { inc_vote: num }
         if (!(currentArticle.votes < 1 && num < 0)) {
         patchVoteCount(id, voteChange)
+        .catch((err) => {
+            console.log(err)
+        })
         setUpdateArticleVotes(true)
         }
     }
