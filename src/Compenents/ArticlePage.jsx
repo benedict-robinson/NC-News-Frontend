@@ -4,13 +4,20 @@ import CommentList from "./CommentList"
 
 
 
-export default function ArticlePage({currentArticle, setCurrentArticle}) {
+export default function ArticlePage({currentArticle, setCurrentArticle, isLoading, setIsloading}) {
     const [updateArticleVotes, setUpdateArticleVotes] = useState(false)
 
     useEffect(() => {
+        setIsloading(true)
         fecthArticleById(currentArticle.article_id).then((response) => {
             setCurrentArticle(response)
             setUpdateArticleVotes(false)
+        })
+        .catch((err) => {
+            console.log(err)
+        })
+        .finally(() => {
+            setIsloading(false)
         })
     }, [updateArticleVotes])
 
@@ -20,6 +27,12 @@ export default function ArticlePage({currentArticle, setCurrentArticle}) {
         patchVoteCount(id, voteChange)
         setUpdateArticleVotes(true)
         }
+    }
+
+    if (isLoading) {
+        return (
+          <span class="loader"></span>  
+        )
     }
     
   return (
