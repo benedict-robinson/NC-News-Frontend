@@ -60,7 +60,7 @@ export default function Votes({type, id, initialVotes}) {
 
   return (
     <div>
-        <label>Total votes: {voteCount} &nbsp; </label>
+        <label>{voteCount} &nbsp; </label>
         <button onClick={() => {
             upVote(id)
         }} className={isPressedUp ? "button-pressed" : ""}>⬆️</button>

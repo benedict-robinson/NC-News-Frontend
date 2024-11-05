@@ -3,6 +3,7 @@ import { fecthArticleById, patchVoteCount } from "../api"
 import CommentList from "./CommentList"
 import { useParams } from "react-router-dom"
 import Votes from "./Votes"
+import { format } from "date-fns"
 
 
 
@@ -29,15 +30,18 @@ export default function ArticlePage() {
           <span className="loader"></span>  
         )
     }
+
+    const formattedDate = format(currentArticle.created_at, 'HH:mm dd/MM/yyyy')
     
   return (
     <div>
         <h2>{currentArticle.title}</h2>
         <h3>{currentArticle.author}</h3>
+        <p>{formattedDate}</p>
         <img src={currentArticle.article_img_url} />
         <p>{currentArticle.body}</p>
-        <Votes type="articles" id={currentArticle.article_id} initialVotes={currentArticle.votes}/>  
-        <p>Comments</p>
+        <p>Total votes: </p>
+        <Votes type="articles" id={currentArticle.article_id} initialVotes={currentArticle.votes}/> 
         <CommentList currentArticle={currentArticle}/>
     </div>
   )
