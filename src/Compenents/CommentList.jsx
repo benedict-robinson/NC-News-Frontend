@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { fetchComments } from "../api"
 import CommentCard from "./CommentCard"
+import PostNewComment from "./PostNewComment"
 
 export default function CommentList({currentArticle}) {
     const [comments, setComments] = useState([])
@@ -9,9 +10,11 @@ export default function CommentList({currentArticle}) {
             setComments(response)
         })
     }, [])
-
+    
   return (
     <div>
+        <PostNewComment setComments={setComments} id={currentArticle.article_id}/>
+        <h3>Comments</h3>
         <ul>
             {comments.map((comment) => {
                 return <CommentCard comment={comment} key={comment.comment_id}/>

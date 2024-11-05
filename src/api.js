@@ -46,11 +46,19 @@ function fetchCommentById(id) {
     })
 }
 
+function postNewComment(id, commentObj) {
+    return api.post(`/articles/${id}/comments`, commentObj)
+    .then((response) => {
+        return response
+    })
+}
+
 export {
     fetchArticles,
     fecthArticleById,
     patchVoteCount,
     fetchComments,
     patchCommentsVoteCount,
-    fetchCommentById
+    fetchCommentById,
+    postNewComment
 }
