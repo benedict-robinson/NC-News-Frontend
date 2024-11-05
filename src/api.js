@@ -18,8 +18,8 @@ function fecthArticleById(id) {
     })
 }
 
-function patchVoteCount(id, votesObj) {
-    return api.patch(`/articles/${id}`, votesObj)
+function patchVoteCount(type, id, votesObj) {
+    return api.patch(`/${type}/${id}`, votesObj)
     .then((response) => {
         return response
     })

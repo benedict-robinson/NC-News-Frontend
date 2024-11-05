@@ -7,17 +7,6 @@ import UserPage from './UserPage';
 
 export default function StateManager() {
 
-    // const getCurrentArticle = () => {
-    //     const article = sessionStorage.getItem("currentArticle")
-    //     return article ? JSON.parse(article) : {article_id: 0}
-    // }
-    
-    // const [currentArticle, setCurrentArticle] = useState(getCurrentArticle);
-    // useEffect(() => {
-    //     sessionStorage.setItem("currentArticle", JSON.stringify(currentArticle))
-    // }, [currentArticle])
-
-
   return (
     <div>
     <Routes>

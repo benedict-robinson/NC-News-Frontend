@@ -1,7 +1,7 @@
 import Header from './Compenents/Header'
 import PostAndSignIn from './Compenents/PostAndSignIn'
 import NavBar from './Compenents/NavBar'
-import StateManager from './Compenents/StateManager'
+import RouteManager from './Compenents/RouteManager'
 
 function App() {
 
@@ -16,7 +16,7 @@ function App() {
     </div>
     
     <div className="content">
-      <StateManager />
+      <RouteManager />
     </div>
     </>
   )
