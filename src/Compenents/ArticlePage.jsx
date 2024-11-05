@@ -31,7 +31,7 @@ export default function ArticlePage({currentArticle, setCurrentArticle, isLoadin
 
     if (isLoading) {
         return (
-          <span class="loader"></span>  
+          <span className="loader"></span>  
         )
     }
     

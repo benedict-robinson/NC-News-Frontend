@@ -6,7 +6,7 @@ export default function Home({articles, setCurrentArticle, isLoading}) {
 
   if (isLoading) {
     return (
-      <span class="loader"></span>
+      <span className="loader"></span>
     )
   }
 

@@ -4,6 +4,8 @@ import ArticlePage from './ArticlePage'
 import Topics from './Topics'
 import { useEffect, useState } from "react";
 import { fetchArticles } from '../api';
+import SignInUserPage from './SignInUserPage';
+import UserPage from './UserPage';
 
 export default function StateManager() {
     const [isLoading, setIsLoading] = useState(true)
@@ -38,6 +40,8 @@ export default function StateManager() {
         <Route path="/" element={<Home articles={articles} setCurrentArticle={setCurrentArticle} isLoading={isLoading}/>} />
         <Route path="/topics" element={<Topics />} />
         <Route path={`/article/${currentArticle.article_id}`} element={<ArticlePage currentArticle={currentArticle} setCurrentArticle={setCurrentArticle} isLoading={isLoading} setIsloading={setIsLoading}/>}/>
+        <Route path="/sign-in" element={<SignInUserPage />}/>
+        <Route path="/user" element={<UserPage />}/>
     </Routes>
     </div>
   )
