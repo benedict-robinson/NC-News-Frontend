@@ -18,8 +18,8 @@ function fecthArticleById(id) {
     })
 }
 
-function patchVoteCount(type, id, votesObj) {
-    return api.patch(`/${type}/${id}`, votesObj)
+function patchArticleVoteCount(id, votesObj) {
+    return api.patch(`/articles/${id}`, votesObj)
     .then((response) => {
         return response
     })
@@ -32,7 +32,7 @@ function fetchComments(id) {
     })
 }
 
-function patchCommentsVoteCount(id, votesObj) {
+function patchCommentVoteCount(id, votesObj) {
     return api.patch(`/comments/${id}`, votesObj)
     .then((response) => {
         return response
@@ -63,9 +63,9 @@ function deleteComment (id) {
 export {
     fetchArticles,
     fecthArticleById,
-    patchVoteCount,
+    patchArticleVoteCount,
     fetchComments,
-    patchCommentsVoteCount,
+    patchCommentVoteCount,
     fetchCommentById,
     postNewComment,
     deleteComment

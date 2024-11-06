@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchCommentById, patchCommentsVoteCount } from "../api"
-import Votes from "./Votes"
+import CommentVotes from "./CommentVotes"
 import {format} from "date-fns"
 import CommentDelete from "./CommentDelete"
 
@@ -13,7 +12,7 @@ export default function CommentCard({comment, comments, setComments}) {
         <p>{comment.body}</p>
         <p>{comment.author}</p>
         <p>{formattedDate}</p>
-        <Votes type="comments" id={comment.comment_id} initialVotes={comment.votes}/>
+        <CommentVotes id={comment.comment_id} initialVotes={comment.votes}/>
         <CommentDelete comment={comment} comments={comments} setComments={setComments}/>
     </li>
   )

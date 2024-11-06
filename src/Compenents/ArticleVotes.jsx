@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
-import { patchVoteCount } from "../api"
+import { patchArticleVoteCount } from "../api"
 
-export default function Votes({type, id, initialVotes}) {
+export default function ArticleVotes({id, initialVotes}) {
     const [voteCount, setVoteCount] = useState(0)
     const [isPressedUp, setIsPressedUp] = useState(false)
     const [isPressedDown, setIsPressedDown] = useState(false)
@@ -16,7 +16,7 @@ export default function Votes({type, id, initialVotes}) {
         if (isPressedUp) {
             setVoteCount((currVoteCount) => currVoteCount - 1)
             setIsPressedUp(false)
-            patchVoteCount(type, id, {inc_vote: -1}).catch((err) => {
+            patchArticleVoteCount(id, {inc_vote: -1}).catch((err) => {
                 setVoteCount((currVoteCount) => currVoteCount + 1)
                 setError("Vote Failed - Please Try Again")
                 setIsPressedUp(true)
@@ -26,7 +26,7 @@ export default function Votes({type, id, initialVotes}) {
             setVoteCount((currVoteCount) => currVoteCount + num)
             setIsPressedUp(true)
             setIsPressedDown(false)
-            patchVoteCount(type, id, {inc_vote: num}).catch((err) => {
+            patchArticleVoteCount(id, {inc_vote: num}).catch((err) => {
                 setVoteCount((currVoteCount) => currVoteCount - num)
                 setError("Vote Failed - Please Try Again")
                 setIsPressedUp(false)
@@ -40,7 +40,7 @@ export default function Votes({type, id, initialVotes}) {
         if (isPressedDown) {
             setVoteCount((currVoteCount) => currVoteCount + 1)
             setIsPressedDown(false)
-            patchVoteCount(type, id, {inc_vote: 1}).catch((err) => {
+            patchArticleVoteCount(id, {inc_vote: 1}).catch((err) => {
                 setVoteCount((currVoteCount) => currVoteCount - 1)
                 setError("Vote Failed - Please Try Again")
                 setIsPressedDown(true)
@@ -50,7 +50,7 @@ export default function Votes({type, id, initialVotes}) {
             setVoteCount((currVoteCount) => currVoteCount - num)
             setIsPressedDown(true)
             setIsPressedUp(false)
-            patchVoteCount(type, id, {inc_vote: -num}).catch((err) => {
+            patchArticleVoteCount(id, {inc_vote: -num}).catch((err) => {
                 setVoteCount((currVoteCount) => currVoteCount + num)
                 setError("Vote Failed - Please Try Again")
                 setIsPressedDown(false)
@@ -60,7 +60,7 @@ export default function Votes({type, id, initialVotes}) {
 
   return (
     <div>
-        <label>{voteCount} &nbsp; </label>
+        <label>Total Votes: {voteCount} &nbsp; </label>
         <button onClick={() => {
             upVote(id)
         }} className={isPressedUp ? "button-pressed" : ""}>⬆️</button>
