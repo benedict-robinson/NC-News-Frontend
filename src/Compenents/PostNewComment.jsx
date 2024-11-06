@@ -21,8 +21,13 @@ export default function PostNewComment({id, setComments}) {
         setComments((currComments) => {
             return [newComment, ...currComments]
         })
-        postNewComment(id, newComment).catch((err) => {
+
+        setCommentInProgress("")
+        
+        postNewComment(id, newComment).then(() => {
+        }).catch((err) => {
             setErrorMsg("Couldn't Post Comment - Please Try Again")
+            setCommentInProgress(newComment.body)
             setComments((currComments) => {
                 return currComments.slice(1)
             })
@@ -31,7 +36,7 @@ export default function PostNewComment({id, setComments}) {
    
   return (
     <div>
-        <input id="new-comment-box" type="text" placeholder="Have Your Say On This Article..." onChange={handleChange}></input>
+        <input id="new-comment-box" type="text" value={commentInProgress} placeholder="Have Your Say On This Article..." onChange={handleChange}></input>
         <button onClick={handleSubmit}>Post</button>
         <br></br>
         <p>{errorMsg}</p>
