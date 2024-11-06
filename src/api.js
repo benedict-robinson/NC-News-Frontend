@@ -53,6 +53,13 @@ function postNewComment(id, commentObj) {
     })
 }
 
+function deleteComment (id) {
+    return api.delete(`/comments/${id}`)
+    .then((response) => {
+        return response
+    })
+}
+
 export {
     fetchArticles,
     fecthArticleById,
@@ -60,5 +67,6 @@ export {
     fetchComments,
     patchCommentsVoteCount,
     fetchCommentById,
-    postNewComment
+    postNewComment,
+    deleteComment
 }
