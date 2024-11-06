@@ -22,7 +22,8 @@ export default function PostNewComment({id, setComments}) {
 
         setCommentInProgress("")
         
-        postNewComment(id, newComment).then(() => {
+        postNewComment(id, newComment).then(({data}) => {
+            newComment.comment_id = data.comment.comment_id
             setComments((currComments) => {
                 return [newComment, ...currComments]
             })
