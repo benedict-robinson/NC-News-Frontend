@@ -10,14 +10,14 @@ export default function CommentDelete({comment, comments, setComments}) {
 
     function handleDelete(id) {
         const preDeleteComments = comments
+        // is this ^ method ok? Should they have the same reference in memory? It works so I'm assuming it's good for now
+        deleteComment(id).then(() => {
         setComments((currComments) => {
             return currComments.filter((currComment) => {
                 return currComment !== comment
             })
         })
-        // is this ^ method ok? Should they have the same reference in memory? It works so I'm assuming it's good for now
-        deleteComment(id)
-        .catch((err) => {
+        }).catch((err) => {
             setIsErr(true)
             setComments(preDeleteComments)
         })
