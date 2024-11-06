@@ -18,13 +18,14 @@ export default function PostNewComment({id, setComments}) {
             votes: 0,
             created_at: Date.now()
         }
-        setComments((currComments) => {
-            return [newComment, ...currComments]
-        })
+        
 
         setCommentInProgress("")
         
         postNewComment(id, newComment).then(() => {
+            setComments((currComments) => {
+                return [newComment, ...currComments]
+            })
         }).catch((err) => {
             setErrorMsg("Couldn't Post Comment - Please Try Again")
             setCommentInProgress(newComment.body)

@@ -4,7 +4,7 @@ import { deleteComment } from "../api"
 
 
 export default function CommentDelete({comment, comments, setComments}) {
-    const errorMsg = "Couldn't Post Comment - Please Try Again"
+    const errorMsg = "Couldn't Delete Comment - Please Try Again"
     const [isErr, setIsErr] = useState(false)
     const { user } = useContext(UserContext)
 
