@@ -6,15 +6,15 @@ const api = axios.create({
   
 function fetchArticles() {
 return api.get(`/articles`)
-.then((response) => {
-    return response.data.articles
+.then(({data}) => {
+    return data.articles
 })
 }
 
 function fecthArticleById(id) {
     return api.get(`/articles/${id}`)
-    .then((response) => {
-        return response.data.article
+    .then(({data}) => {
+        return data.article
     })
 }
 
@@ -27,8 +27,8 @@ function patchArticleVoteCount(id, votesObj) {
 
 function fetchComments(id) {
     return api.get(`/articles/${id}/comments`)
-    .then((response) => {
-        return response.data.comments
+    .then(({data}) => {
+        return data.comments
     })
 }
 
@@ -41,8 +41,8 @@ function patchCommentVoteCount(id, votesObj) {
 
 function fetchCommentById(id) {
     return api.get(`/comments/${id}`)
-    .then((response) => {
-        return response.data.comment
+    .then(({data}) => {
+        return data.comment
     })
 }
 
@@ -60,6 +60,20 @@ function deleteComment (id) {
     })
 }
 
+function getTopics() {
+    return api.get("/topics")
+    .then(({data}) => {
+        return data.topics
+    })
+}
+
+function fetchArticlesByTopic(slug) {
+    return api.get(`/articles?topic=${slug}`)
+    .then(({data}) => {
+        return data.articles
+    })
+}
+
 export {
     fetchArticles,
     fecthArticleById,
@@ -68,5 +82,7 @@ export {
     patchCommentVoteCount,
     fetchCommentById,
     postNewComment,
-    deleteComment
+    deleteComment,
+    getTopics,
+    fetchArticlesByTopic
 }
