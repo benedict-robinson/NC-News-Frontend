@@ -1,11 +1,11 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { fetchCommentById, patchCommentsVoteCount } from "../api"
 import Votes from "./Votes"
 import {format} from "date-fns"
 import CommentDelete from "./CommentDelete"
 
 export default function CommentCard({comment, comments, setComments}) {
-  
+  const [isErrDelete, setIsErrDelete] = useState(false)
   const formattedDate = format(comment.created_at, 'HH:mm dd/MM/yy')
 
   return (
@@ -14,7 +14,7 @@ export default function CommentCard({comment, comments, setComments}) {
         <p>{comment.author}</p>
         <p>{formattedDate}</p>
         <Votes type="comments" id={comment.comment_id} initialVotes={comment.votes}/>
-        <CommentDelete comment={comment} comments={comments} setComments={setComments}/>
+        <CommentDelete comment={comment} comments={comments} setComments={setComments} isErrDelete={isErrDelete} setIsErrDelete={setIsErrDelete}/>
     </li>
   )
 }

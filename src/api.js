@@ -54,7 +54,7 @@ function postNewComment(id, commentObj) {
 }
 
 function deleteComment (id) {
-    return api.delete(`/comments/${id}`)
+    return api.delete(`/commentz/${id}`)
     .then((response) => {
         return response
     })
