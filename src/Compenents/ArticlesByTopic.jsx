@@ -23,6 +23,15 @@ export default function ArticlesByTopic() {
         })
     }, [searchParams])
 
+  if (articlesByTopic.length === 0) {
+    return (
+        <div>
+            <h2>{topicTitle} Articles</h2>
+            <p>Seems a little quiet over here. Go to 'Write New Article' to get this topic started</p>
+        </div>
+      )
+  }
+
   return (
     <div>
         <h2>{topicTitle} Articles</h2>

@@ -74,6 +74,13 @@ function fetchArticlesByTopic(slug, sortQuery) {
     })
 }
 
+function postNewTopic(topicObj) {
+    return api.post("/topics",topicObj)
+    .then(({data}) => {
+        return data.topic
+    })
+}
+
 export {
     fetchArticles,
     fecthArticleById,
@@ -84,5 +91,6 @@ export {
     postNewComment,
     deleteComment,
     getTopics,
-    fetchArticlesByTopic
+    fetchArticlesByTopic,
+    postNewTopic
 }

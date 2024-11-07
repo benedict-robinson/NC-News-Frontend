@@ -11,9 +11,11 @@ export default function NavBar() {
     getTopics().then((topics) => {
       topics.map(({slug}) => {
         return fetchArticlesByTopic(slug, "").then((response) => {
+          if (response.length > 0) {
           setAllTopics((currAllTopics) => {
             return [...currAllTopics, {topicSlug: response[0].topic, amount: response.length}]
           })
+        }
         })
         })
     })

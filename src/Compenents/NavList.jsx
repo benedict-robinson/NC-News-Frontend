@@ -14,7 +14,9 @@ export default function NavList({allTopics}) {
             {hotTopics.map((hotTopic) => {
                 return <NavBarCard topic={hotTopic} key={hotTopic.topicSlug}/>
             })}
+            <Link to="/newtopic">
             <li>Create New Topic +</li>
+            </Link>
         </ul>
     </div>
   )

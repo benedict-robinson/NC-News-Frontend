@@ -6,6 +6,7 @@ import SignInUserPage from './SignInUserPage';
 import UserPage from './UserPage';
 import ArticlesByTopic from './ArticlesByTopic';
 import { useState } from 'react';
+import NewTopic from './NewTopic';
 
 export default function StateManager() {
 
@@ -18,6 +19,7 @@ export default function StateManager() {
         <Route path={`/articles/:article_id`} element={<ArticlePage />}/>
         <Route path="/sign-in" element={<SignInUserPage />}/>
         <Route path="/user" element={<UserPage />}/>
+        <Route path="/newtopic" element={<NewTopic />}/>
         <Route path="/:topic_slug/articles" element={<ArticlesByTopic />}/>
     </Routes>
     </div>
