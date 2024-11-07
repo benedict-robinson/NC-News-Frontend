@@ -1,0 +1,11 @@
+.sort-controls {
+    display: flex;
+    justify-content: right;
+    margin: 5px;
+}
+
+@media (min-width: 767px) {
+    .sort-controls{ 
+    margin-right: 100px;
+    }
+}

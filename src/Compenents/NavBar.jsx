@@ -10,12 +10,9 @@ export default function NavBar() {
   useEffect(() => {
     getTopics().then((topics) => {
       topics.map(({slug}) => {
-        return fetchArticlesByTopic(slug).then((response) => {
+        return fetchArticlesByTopic(slug, "").then((response) => {
           setAllTopics((currAllTopics) => {
-            // const slugs = currAllTopics.map((currTopic) => currTopic.topicSlug)
-            // if (!slugs.includes(response[0].topic) && currAllTopics.length < 4) {
             return [...currAllTopics, {topicSlug: response[0].topic, amount: response.length}]
-            // }
           })
         })
         })

@@ -14,7 +14,7 @@ export default function CommentList({currentArticle}) {
   return (
     <div>
         <PostNewComment setComments={setComments} id={currentArticle.article_id}/>
-        <h3>Comments</h3>
+        <h3>Comments ({comments.length})</h3>
         <ul>
             {comments.map((comment) => {
                 return <CommentCard comment={comment} key={comment.comment_id} comments={comments} setComments={setComments}/>

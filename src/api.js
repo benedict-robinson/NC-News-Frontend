@@ -4,10 +4,10 @@ const api = axios.create({
     baseURL: `https://backend-to-the-future.onrender.com/api`,
   });
   
-function fetchArticles() {
-return api.get(`/articles`)
-.then(({data}) => {
-    return data.articles
+function fetchArticles(sortQuery) {
+    return api.get(`/articles${sortQuery}`)
+    .then(({data}) => {
+        return data.articles
 })
 }
 
@@ -67,8 +67,8 @@ function getTopics() {
     })
 }
 
-function fetchArticlesByTopic(slug) {
-    return api.get(`/articles?topic=${slug}`)
+function fetchArticlesByTopic(slug, sortQuery) {
+    return api.get(`/articles?topic=${slug}${sortQuery}`)
     .then(({data}) => {
         return data.articles
     })

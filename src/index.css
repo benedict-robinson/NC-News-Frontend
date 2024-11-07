@@ -57,9 +57,8 @@ h1 {
 }
 
 .articles-list {
-  /* display: grid;
-  place-items: center; */
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
