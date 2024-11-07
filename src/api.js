@@ -4,8 +4,9 @@ const api = axios.create({
     baseURL: `https://backend-to-the-future.onrender.com/api`,
   });
   
-function fetchArticles() {
-return api.get(`/articles`)
+function fetchArticles(sortQuery) {
+    console.log(sortQuery)
+return api.get(`/articles${sortQuery}`)
 .then(({data}) => {
     return data.articles
 })

@@ -4,12 +4,12 @@ import { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
 
 
-export default function Home() {
+export default function Home({sortQuery, setSortQuery}) {
   const [isLoading, setIsLoading] = useState(true)
-
+  
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-          fetchArticles().then((response) => {
+          fetchArticles(sortQuery).then((response) => {
               setArticles(response)
           })
           .catch((err) => {
@@ -18,7 +18,7 @@ export default function Home() {
           .finally(() => {
               setIsLoading(false)
           })
-      }, [])
+      }, [sortQuery])
 
   if (isLoading) {
     return (
@@ -27,6 +27,6 @@ export default function Home() {
   }
 
   return (
-    <ArticlesList articles={articles}/>
+    <ArticlesList articles={articles} setSortQuery={setSortQuery}/>
   )
 }
