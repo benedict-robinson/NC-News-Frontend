@@ -1,13 +1,24 @@
+import { useSearchParams } from "react-router-dom"
 import "../CSS/sortcontrols.css"
+import { useEffect, useState } from "react"
 
-export default function SortBy({setSortQuery}) {
+export default function SortBy() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const [selectValue, setSelectValue] = useState(localStorage.getItem("selectValue") ? localStorage.getItem("selectValue") : "")
+
     function handleChange (event) {
-        setSortQuery(event.target.value)
-    }
+        setSearchParams(event.target.value)
+        setSelectValue(event.target.value)
+      }
+        
+    useEffect(() => {
+        localStorage.setItem("selectValue", selectValue)
+      }, [selectValue])
+
   return (
     <div className="sort-controls">
         <label>Sorted by:&nbsp; </label>
-        <select onChange={handleChange}>
+        <select value={selectValue} onChange={handleChange}>
             <option value={""}>Newest</option>
             <option value={"?order=asc"}>Oldest</option>
             <option value={"?sort_by=votes"}>Most Votes</option>

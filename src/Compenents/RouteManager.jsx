@@ -8,17 +8,17 @@ import ArticlesByTopic from './ArticlesByTopic';
 import { useState } from 'react';
 
 export default function StateManager() {
-const [sortQuery, setSortQuery] = useState("")
+
   return (
     <div>
     <Routes>
-        <Route path="/" element={<Home sortQuery={sortQuery} setSortQuery={setSortQuery}/>} />
-        <Route path="/articles" element={<Home sortQuery={sortQuery} setSortQuery={setSortQuery}/>} />
+        <Route path="/" element={<Home />} />
+        <Route path="/articles" element={<Home />} />
         <Route path="/topics" element={<Topics />} />
         <Route path={`/articles/:article_id`} element={<ArticlePage />}/>
         <Route path="/sign-in" element={<SignInUserPage />}/>
         <Route path="/user" element={<UserPage />}/>
-        <Route path="/:topic_slug/articles" element={<ArticlesByTopic sortQuery={sortQuery}/>}/>
+        <Route path="/:topic_slug/articles" element={<ArticlesByTopic />}/>
     </Routes>
     </div>
   )

@@ -2,14 +2,19 @@ import ArticlesList from "./ArticlesList";
 import "../CSS/loader.css"
 import { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
+import { useSearchParams } from "react-router-dom";
 
 
-export default function Home({sortQuery, setSortQuery}) {
+export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
+  const [searchParams] = useSearchParams()
+  const sortByQuery = searchParams.get("sort_by")
+  const orderQuery = searchParams.get("order")
+  const query = `?${sortByQuery ? `sort_by=${sortByQuery}` : `order=${orderQuery}`}${sortByQuery && orderQuery ? `&order=${orderQuery}` : ""}`
   
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-          fetchArticles(sortQuery).then((response) => {
+          fetchArticles(sortByQuery || orderQuery ? query : "").then((response) => {
               setArticles(response)
           })
           .catch((err) => {
@@ -18,7 +23,7 @@ export default function Home({sortQuery, setSortQuery}) {
           .finally(() => {
               setIsLoading(false)
           })
-      }, [sortQuery])
+      }, [searchParams])
 
   if (isLoading) {
     return (
@@ -27,6 +32,6 @@ export default function Home({sortQuery, setSortQuery}) {
   }
 
   return (
-    <ArticlesList articles={articles} setSortQuery={setSortQuery}/>
+    <ArticlesList articles={articles}/>
   )
 }

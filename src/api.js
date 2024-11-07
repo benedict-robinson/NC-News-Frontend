@@ -5,10 +5,9 @@ const api = axios.create({
   });
   
 function fetchArticles(sortQuery) {
-    console.log(sortQuery)
-return api.get(`/articles${sortQuery}`)
-.then(({data}) => {
-    return data.articles
+    return api.get(`/articles${sortQuery}`)
+    .then(({data}) => {
+        return data.articles
 })
 }
 
@@ -68,8 +67,8 @@ function getTopics() {
     })
 }
 
-function fetchArticlesByTopic(slug) {
-    return api.get(`/articles?topic=${slug}`)
+function fetchArticlesByTopic(slug, sortQuery) {
+    return api.get(`/articles?topic=${slug}${sortQuery}`)
     .then(({data}) => {
         return data.articles
     })
