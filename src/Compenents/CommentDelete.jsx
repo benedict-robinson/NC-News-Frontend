@@ -9,17 +9,13 @@ export default function CommentDelete({comment, comments, setComments}) {
     const { user } = useContext(UserContext)
 
     function handleDelete(id) {
-        const preDeleteComments = comments
-        // is this ^ method ok? Should they have the same reference in memory? It works so I'm assuming it's good for now
-        deleteComment(id).then(() => {
-        setComments((currComments) => {
-            return currComments.filter((currComment) => {
-                return currComment !== comment
-            })
+        const commentsWithDelete = comments.filter((comment) => {
+            return comment.comment_id !== id
         })
+        deleteComment(id).then(() => {
+        setComments(commentsWithDelete)
         }).catch((err) => {
             setIsErr(true)
-            setComments(preDeleteComments)
         })
     }   
        
