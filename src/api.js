@@ -75,6 +75,7 @@ function fetchArticlesByTopic(slug, sortQuery) {
 }
 
 function postNewTopic(topicObj) {
+    console.log(topicObj)
     return api.post("/topics",topicObj)
     .then(({data}) => {
         return data.topic

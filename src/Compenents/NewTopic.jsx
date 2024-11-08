@@ -20,6 +20,7 @@ export default function NewTopic() {
             console.log(err)
         })
       };
+    
   return (
     <div>
         <h2>What do you want to talk about?</h2>
