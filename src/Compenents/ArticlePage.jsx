@@ -4,6 +4,7 @@ import CommentList from "./CommentList"
 import { useParams } from "react-router-dom"
 import ArticleVotes from "./ArticleVotes"
 import { format } from "date-fns"
+import ErrorHandle from "./ErrorHandle"
 
 
 
@@ -11,14 +12,15 @@ export default function ArticlePage() {
     const [currentArticle, setCurrentArticle] = useState({})
     const [isLoading, setIsLoading] = useState(true)
     const { article_id } = useParams()
-
+    const [isErr, setIsErr] = useState(false)
+    
     useEffect(() => {
         setIsLoading(true)
         fecthArticleById(article_id).then((response) => {
             setCurrentArticle(response)
         })
         .catch((err) => {
-            console.log(err)
+            setIsErr(true)
         })
         .finally(() => {
             setIsLoading(false)
@@ -30,7 +32,7 @@ export default function ArticlePage() {
           <span className="loader"></span>  
         )
     }
-
+    if (!isErr) {
     const formattedDate = format(currentArticle.created_at, 'HH:mm dd/MM/yyyy')
     
   return (
@@ -44,4 +46,10 @@ export default function ArticlePage() {
         <CommentList currentArticle={currentArticle}/>
     </section>
   )
+    }
+    if (isErr) {
+        return (
+            <ErrorHandle error={"Non-Existent Article"}/>
+        )
+    }
 }

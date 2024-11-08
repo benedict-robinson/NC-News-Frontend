@@ -7,6 +7,7 @@ import UserPage from './UserPage';
 import ArticlesByTopic from './ArticlesByTopic';
 import { useState } from 'react';
 import NewTopic from './NewTopic';
+import ErrorHandle from './ErrorHandle';
 
 export default function StateManager() {
 
@@ -21,6 +22,7 @@ export default function StateManager() {
         <Route path="/user" element={<UserPage />}/>
         <Route path="/newtopic" element={<NewTopic />}/>
         <Route path="/:topic_slug/articles" element={<ArticlesByTopic />}/>
+        <Route path="*" element={<ErrorHandle error={"Invalid Route"}/>} />
     </Routes>
     </div>
   )
