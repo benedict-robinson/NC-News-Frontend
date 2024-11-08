@@ -1,7 +1,9 @@
 import { useParams, useSearchParams } from "react-router-dom"
-import { fetchArticlesByTopic } from "../api"
+import { fetchArticlesByTopic, getTopics } from "../api"
 import { useEffect, useState } from "react"
 import ArticlesList from "./ArticlesList"
+import ErrorHandle from "./ErrorHandle"
+import "../CSS/loader.css"
 
 export default function ArticlesByTopic() {
     const [articlesByTopic, setArticlesByTopic] = useState([])
@@ -9,20 +11,48 @@ export default function ArticlesByTopic() {
     const [searchParams] = useSearchParams()
     const sortByQuery = searchParams.get("sort_by")
     const orderQuery = searchParams.get("order")
+    const [slugs, setSlugs] = useState([])
+    const [isLoading, setIsLoading] = useState(true)
 
     const query = `&${sortByQuery ? `sort_by=${sortByQuery}` : `order=${orderQuery}`}${sortByQuery && orderQuery ? `&order=${orderQuery}` : ""}`
 
     const topicTitle = `${topic_slug[0].toUpperCase()}${topic_slug.slice(1)}`
     const secondaryQueries = sortByQuery || orderQuery ? query : ""
+    
     useEffect(() => {
-        fetchArticlesByTopic(topic_slug, secondaryQueries).then((response) => {
-            setArticlesByTopic(response)
+        getTopics().then((response) => {
+            const topicSlugs = response.map(topic => {
+                return topic.slug
+            })
+            setSlugs(topicSlugs)
         })
         .catch((err) => {
             console.log(err)
         })
     }, [searchParams])
 
+    useEffect(() => {
+        fetchArticlesByTopic(topic_slug, secondaryQueries).then((response) => {
+            setArticlesByTopic(response)
+            setIsLoading(false)
+        })
+        .catch((err) => {
+            setIsLoading(false)
+        })
+    }, [searchParams, topic_slug])
+
+    if (isLoading) {
+    return (
+        <span className="loader"></span>
+    )
+    }
+
+  if (!slugs.includes(topic_slug)) {
+    return (
+        <ErrorHandle error={"Non-Existent Topic"}/>
+    )
+  }
+    
   if (articlesByTopic.length === 0) {
     return (
         <div>
