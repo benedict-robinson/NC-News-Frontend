@@ -1,9 +1,11 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
 import { postNewTopic } from "../api";
 import { useNavigate } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 export default function NewTopic() {
     const [topicObj, setTopicObj] = useState({})
+    const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
     function handleChange({target}) {
@@ -13,7 +15,8 @@ export default function NewTopic() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        postNewTopic(topicObj).then(() => {
+        postNewTopic(topicObj).then((response) => {
+            response.created_by = user.username
             navigate(`/${topicObj.slug}/articles`)
         })
         .catch((err) => {

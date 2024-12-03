@@ -1,9 +1,8 @@
 import { Link } from "react-router-dom";
 import NavBarCard from "./NavBarCard";
 
-export default function NavList({allTopics}) {
-    const midPoint = allTopics.length / 2
-    const hotTopics = allTopics.slice(0, midPoint).sort((a, b) => b.amount - a.amount).slice(0, 3)
+export default function NavList() {
+  const navTopics = ["football", "cooking", "coding"]
     
   return (
     <div>
@@ -11,8 +10,8 @@ export default function NavList({allTopics}) {
           <Link to="/topics">
             <li>All Topics</li>
           </Link>
-            {hotTopics.map((hotTopic) => {
-                return <NavBarCard topic={hotTopic} key={hotTopic.topicSlug}/>
+            {navTopics.map((navTopic) => {
+                return <NavBarCard topic={navTopic} key={navTopic}/>
             })}
             <Link to="/newtopic">
             <li>Create New Topic +</li>

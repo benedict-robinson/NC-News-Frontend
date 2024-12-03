@@ -10,7 +10,7 @@ import NewTopic from './NewTopic';
 import ErrorHandle from './ErrorHandle';
 
 export default function StateManager() {
-
+  
   return (
     <div>
     <Routes>
