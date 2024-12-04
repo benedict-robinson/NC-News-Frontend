@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import ArticlesList from "./ArticlesList"
 import ErrorHandle from "./ErrorHandle"
 import "../CSS/loader.css"
+import SortBy from "./SortBy"
 
 export default function ArticlesByTopic() {
     const [articlesByTopic, setArticlesByTopic] = useState([])
@@ -65,6 +66,7 @@ export default function ArticlesByTopic() {
   return (
     <div>
         <h2>{topicTitle} Articles</h2>
+        <SortBy />
         <ArticlesList articles={articlesByTopic}/>
     </div>
   )

@@ -8,13 +8,13 @@ export default function NavList() {
     <div>
         <ul>
           <Link to="/topics">
-            <li>All Topics</li>
+            <li className="nav-list-item">All Topics</li>
           </Link>
             {navTopics.map((navTopic) => {
                 return <NavBarCard topic={navTopic} key={navTopic}/>
             })}
             <Link to="/newtopic">
-            <li>Create New Topic +</li>
+            <li className="nav-list-item">New Topic +</li>
             </Link>
         </ul>
     </div>

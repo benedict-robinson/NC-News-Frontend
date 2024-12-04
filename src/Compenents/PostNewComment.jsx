@@ -37,7 +37,7 @@ export default function PostNewComment({id, setComments}) {
     }
    
   return (
-    <div>
+    <div id="post-new-comment">
         <input id="new-comment-box" type="text" value={commentInProgress} placeholder="Have Your Say On This Article..." onChange={handleChange} onKeyDown={(event) => {
             if (event.key === "Enter") {
                 handleSubmit()

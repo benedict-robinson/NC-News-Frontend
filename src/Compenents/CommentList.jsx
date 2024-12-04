@@ -12,9 +12,9 @@ export default function CommentList({currentArticle}) {
     }, [])
     
   return (
-    <div>
+    <div className="right-column">
+        <h3 id="comment-title">Comments ({comments.length})</h3>
         <PostNewComment setComments={setComments} id={currentArticle.article_id}/>
-        <h3>Comments ({comments.length})</h3>
         <ul>
             {comments.map((comment) => {
                 return <CommentCard comment={comment} key={comment.comment_id} comments={comments} setComments={setComments}/>
