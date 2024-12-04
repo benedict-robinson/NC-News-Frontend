@@ -36,14 +36,18 @@ export default function ArticlePage() {
     const formattedDate = format(currentArticle.created_at, 'HH:mm dd/MM/yyyy')
     
   return (
-    <section>
-        <h2>{currentArticle.title}</h2>
-        <h3>{currentArticle.author}</h3>
-        <p>{formattedDate}</p>
-        <img src={currentArticle.article_img_url} />
-        <p>{currentArticle.body}</p>
-        <ArticleVotes id={currentArticle.article_id} initialVotes={currentArticle.votes}/> 
-        <CommentList currentArticle={currentArticle}/>
+    <section className="article-page">
+        <div className="article-page-container">
+            <div className="left-column">
+        <h2 id="article-title">{currentArticle.title}</h2>
+        <h3 id="article-subtitle">{currentArticle.author}</h3>
+        <p id="article-date">{formattedDate}</p>
+            <img src={currentArticle.article_img_url} />
+            <p>{currentArticle.body}</p>
+            <ArticleVotes id={currentArticle.article_id} initialVotes={currentArticle.votes}/> 
+            </div>
+            <CommentList currentArticle={currentArticle}/>
+        </div>
     </section>
   )
     }

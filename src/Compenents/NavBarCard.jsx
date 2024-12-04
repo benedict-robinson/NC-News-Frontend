@@ -6,7 +6,7 @@ export default function NavBarCard({topic}) {
     
   return (
     <Link to={`/${topic}/articles`}>
-    <li>{topicTitle}</li>
+    <li className="nav-list-item">{topicTitle}</li>
     </Link>
   )
 }

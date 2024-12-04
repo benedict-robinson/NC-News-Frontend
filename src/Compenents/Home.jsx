@@ -3,7 +3,7 @@ import "../CSS/loader.css"
 import { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
 import { useSearchParams } from "react-router-dom";
-
+import SortBy from "./SortBy"
 
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
@@ -32,6 +32,9 @@ export default function Home() {
   }
 
   return (
+    <section>
+    <SortBy />
     <ArticlesList articles={articles}/>
+    </section>
   )
 }

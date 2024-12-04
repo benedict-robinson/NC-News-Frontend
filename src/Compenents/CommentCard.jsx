@@ -8,7 +8,7 @@ export default function CommentCard({comment, comments, setComments}) {
   const formattedDate = format(comment.created_at, 'HH:mm dd/MM/yy')
 
   return (
-    <li>
+    <li className="comment-card">
         <p>{comment.body}</p>
         <p>{comment.author}</p>
         <p>{formattedDate}</p>
