@@ -253,6 +253,44 @@
     font-size: 14px;
     color: black;
   }
+  .topic-list-container {
+    display: flex;
+    justify-content: center;
+  }
+  .topics-list {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+  }
+  .topics-list li {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  #topic-card {
+    width: 600px;
+    height: 150px;
+    border-radius: 20px;
+    border: 1px solid grey;
+    padding: 15px;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start; 
+    text-align: left; 
+    font-size: 20px;
+    margin: 5px;
+    box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.1s ease-in-out;
+  }
+  #topic-card:hover {
+    color: white;
+    background: black;
+    border: 5px solid black;
+  }
   
   /* @media (prefers-color-scheme: light) {
     :root {
