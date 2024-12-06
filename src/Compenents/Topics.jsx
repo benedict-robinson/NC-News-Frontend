@@ -15,6 +15,11 @@ export default function Topics() {
   }, [])
 
   return (
-    <TopicsList topics={topics}/>
+    <section>
+      <h2>Topics</h2>
+      <div className="topic-list-container">
+      <TopicsList topics={topics}/>
+      </div>
+    </section>
   )
 }
