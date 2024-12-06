@@ -25,7 +25,7 @@ export default function NewTopic() {
       };
     
   return (
-    <div>
+    <div className="new-topic-page">
         <h2>What do you want to talk about?</h2>
         <form>
             <label>
