@@ -101,7 +101,7 @@
     width: 159px;
     justify-content: center;
     text-align: center;
-    box-shadow: 8px 4px 50px rgba(0, 0, 0, 0.2);
+    box-shadow: 8px 4px 10px rgba(0, 0, 0, 0.2);
     transition: all 0.4s ease-in-out;
   }
   .nav-list-item:hover {
@@ -222,7 +222,7 @@
   #comment-title {
     padding-left: 40px;
   }
-  #new-comment-box {
+  input {
     line-height: 28px;
     width: 300px;
     border: 2px solid transparent;
@@ -233,7 +233,7 @@
     color: #0d0c22;
     transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
-  #new-comment-box:focus, #new-comment-box:hover {
+  input:focus, input:hover {
     outline: none;
     padding: 0.2rem 0.2rem;
     border-radius: 1rem;
@@ -291,7 +291,18 @@
     background: black;
     border: 5px solid black;
   }
-  
+  .new-topic-page {
+    border: 2px solid;
+    position: absolute;
+    left: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  form {
+    width: 60%;
+    border: 2px solid;
+  }
   /* @media (prefers-color-scheme: light) {
     :root {
       color: #213547;
