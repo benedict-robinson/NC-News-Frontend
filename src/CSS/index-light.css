@@ -162,6 +162,13 @@
     top: 20px;
     z-index: 1000;
   }
+  #topic-title {
+    width: 25%;
+    position: absolute;
+    left: 30;
+    top: 120px;
+    z-index: 1000;
+  }
   .article-page {
     padding-left: 70px;
     padding-right: 70px;
@@ -204,6 +211,23 @@
   }
   #comment-title {
     padding-left: 40px;
+  }
+  #new-comment-box {
+    line-height: 28px;
+    width: 300px;
+    border: 2px solid transparent;
+    border-bottom-color: #777;
+    padding: .2rem 0;
+    outline: none;
+    background-color: transparent;
+    color: #0d0c22;
+    transition: .3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  }
+  #new-comment-box:focus, #new-comment-box:hover {
+    outline: none;
+    padding: 0.2rem 0.2rem;
+    border-radius: 1rem;
+    border-color: rgba(51, 51, 51, 0.733)
   }
   /* @media (prefers-color-scheme: light) {
     :root {
