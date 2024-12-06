@@ -22,7 +22,7 @@ export default function CommentDelete({comment, comments, setComments}) {
     if (user.username === comment.author) {
         return (
             <>
-            <button onClick={() => {
+            <button id="vote-delete-buttons" onClick={() => {
                 handleDelete(comment.comment_id)
             }}>❌</button>
             {isErr ? <p>{errorMsg}</p> : <p></p>}

@@ -37,6 +37,8 @@
     display: grid;
     grid-template-columns: 1fr 4fr 1fr;
     grid-template-rows: auto auto 1fr; 
+    min-height: 100vh;
+    position: relative
   }
   
   h1 {
@@ -155,11 +157,16 @@
     background: black;
     border: 5px solid black;
   }
-  .sort-controls {
-    width: 100%;
-    position: sticky;
+  .sort-container {
+    position: absolute;
+    top: 25%; 
     right: 0;
-    top: 20px;
+    display: flex;
+    justify-content: flex-end; 
+    align-items: center;
+  }
+  .sort-controls {
+    width: 70%;
     z-index: 1000;
   }
   #topic-title {
@@ -168,6 +175,10 @@
     left: 30;
     top: 120px;
     z-index: 1000;
+  }
+  #topic-desc {
+    margin-top: 40px;
+    width: 20%
   }
   .article-page {
     padding-left: 70px;
@@ -201,10 +212,9 @@
     
   }
   .comment-card {
-    /* border: 2px solid; */
-    border-radius: 20px;
+    border-bottom: 2px solid rgba(51, 51, 51, 0.733);
+    border-radius: 2px;
     width: 100%;
-    box-shadow: inset 4px 4px 4px rgba(0, 0, 0, 0.1), inset -4px -4px 5px rgba(255, 255, 255, 0.3);
   }
   #post-new-comment {
     padding-left: 40px;
@@ -229,6 +239,21 @@
     border-radius: 1rem;
     border-color: rgba(51, 51, 51, 0.733)
   }
+  .date-votes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .votes-delete {
+    display: flex;
+    flex-direction: row;
+  }
+  #comment-author {
+    font-size: 14px;
+    color: black;
+  }
+  
   /* @media (prefers-color-scheme: light) {
     :root {
       color: #213547;
