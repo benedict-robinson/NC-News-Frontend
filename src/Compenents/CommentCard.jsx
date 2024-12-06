@@ -9,11 +9,15 @@ export default function CommentCard({comment, comments, setComments}) {
 
   return (
     <li className="comment-card">
+        <p id="comment-author">{comment.author}</p>
         <p>{comment.body}</p>
-        <p>{comment.author}</p>
+        <div className="date-votes">
         <p>{formattedDate}</p>
-        <CommentVotes id={comment.comment_id} initialVotes={comment.votes}/>
-        <CommentDelete comment={comment} comments={comments} setComments={setComments}/>
+          <div className="votes-delete">
+          <CommentVotes id={comment.comment_id} initialVotes={comment.votes}/>
+          <CommentDelete comment={comment} comments={comments} setComments={setComments}/>
+          </div>
+        </div>
     </li>
   )
 }

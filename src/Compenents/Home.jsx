@@ -33,7 +33,9 @@ export default function Home() {
 
   return (
     <section>
-    <SortBy />
+      <div className="sticky-bar">
+        <SortBy />
+      </div>
     <ArticlesList articles={articles}/>
     </section>
   )

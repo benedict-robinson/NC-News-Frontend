@@ -14,6 +14,7 @@ export default function ArticlesByTopic() {
     const orderQuery = searchParams.get("order")
     const [slugs, setSlugs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
+    const [currTopic, setCurrTopic] = useState([])
 
     const query = `&${sortByQuery ? `sort_by=${sortByQuery}` : `order=${orderQuery}`}${sortByQuery && orderQuery ? `&order=${orderQuery}` : ""}`
 
@@ -21,26 +22,30 @@ export default function ArticlesByTopic() {
     const secondaryQueries = sortByQuery || orderQuery ? query : ""
     
     useEffect(() => {
+        setIsLoading(true)
         getTopics().then((response) => {
+            console.log("here")
+            const current = response.filter(topic => topic.slug === topic_slug)
+            setCurrTopic(current)
             const topicSlugs = response.map(topic => {
                 return topic.slug
             })
             setSlugs(topicSlugs)
         })
+        .then(() => {
+            fetchArticlesByTopic(topic_slug, secondaryQueries).then((response) => {
+                setArticlesByTopic(response)
+            })
+            .then(() => {
+                setIsLoading(false)
+            }) 
+        })
         .catch((err) => {
+            setIsLoading(false)
             console.log(err)
         })
-    }, [searchParams])
-
-    useEffect(() => {
-        fetchArticlesByTopic(topic_slug, secondaryQueries).then((response) => {
-            setArticlesByTopic(response)
-            setIsLoading(false)
-        })
-        .catch((err) => {
-            setIsLoading(false)
-        })
     }, [searchParams, topic_slug])
+
 
     if (isLoading) {
     return (
@@ -65,8 +70,11 @@ export default function ArticlesByTopic() {
 
   return (
     <section>
-        <h2 id="topic-title" >{topicTitle} Articles</h2>
+            <h2 id="topic-title" >{topicTitle} Articles</h2>
+            <p id="topic-desc" >{currTopic[0].description}</p>
+        <div className="sticky-bar">
         <SortBy />
+        </div>
         <ArticlesList articles={articlesByTopic}/>
     </section>
   )
