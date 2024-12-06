@@ -1,6 +1,7 @@
 import { useContext, useState } from "react"
 import { UserContext } from "./UserContext"
 import { postNewComment } from "../api"
+import "../CSS/post-comment-button.css"
 
 export default function PostNewComment({id, setComments}) {
     const [commentInProgress, setCommentInProgress] = useState("")
@@ -43,7 +44,7 @@ export default function PostNewComment({id, setComments}) {
                 handleSubmit()
             }
         }}></input>
-        <button onClick={handleSubmit}>Post</button>
+        <button id="post-comment-button" onClick={handleSubmit}>Post</button>
         <br></br>
         <p>{errorMsg}</p>
     </div>

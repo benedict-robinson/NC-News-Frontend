@@ -64,10 +64,10 @@ export default function ArticlesByTopic() {
   }
 
   return (
-    <div>
-        <h2>{topicTitle} Articles</h2>
+    <section>
+        <h2 id="topic-title" >{topicTitle} Articles</h2>
         <SortBy />
         <ArticlesList articles={articlesByTopic}/>
-    </div>
+    </section>
   )
 }
