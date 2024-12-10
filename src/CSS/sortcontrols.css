@@ -1,7 +1,7 @@
 .sort-controls {
-    display: flex;
     justify-content: right;
     margin: 5px;
+    align-self: flex-start;
 }
 
 @media (min-width: 767px) {

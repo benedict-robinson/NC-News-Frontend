@@ -8,6 +8,8 @@
   color: #213547;
   box-sizing: border-box;
   animation: animloader 1s linear infinite alternate;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes animloader {
