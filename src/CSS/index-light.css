@@ -7,17 +7,23 @@
 :root {
     font-family: "Poppins", sans-serif;
     line-height: 1.5;
-    color: rgb(43, 43, 43);
-    background-color: whitesmoke;
+    --text-color: rgb(43, 43, 43);
+    --background-color: whitesmoke;
   }
   
   body {
+    background-color: var(--background-color);
+    color: var(--text-color);
     margin-left: 3em;
     margin-right: 3em;
     min-width: 320px;
     min-height: 100vh;
     gap: 10px;
     min-height: 100vh;
+  }
+  body.dark {
+    background-color: var(--text-color);
+    color: var(--background-color);
   }
 
   a {
@@ -320,24 +326,6 @@
   #description {
     width: 660px;
   }
-  /* @media (prefers-color-scheme: light) {
-    :root {
-      color: #213547;
-      background-color: #ffffff;
-    }
-    a:hover {
-      color: #747bff;
-    }
-    button {
-      background-color: #f9f9f9;
-    }
-  } */
-  
-  /* #new-comment-box {
-    width: 500px;
-    border-radius: 4px;
-    border: 2px solid grey;
-  } */
 
   @media (max-width: 767px) {
     body {
