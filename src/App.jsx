@@ -7,11 +7,11 @@ import ThemeToggle from './Compenents/ThemeToggle';
 
 function App() {
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1024);
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1400);
 
   useEffect(() => {
     const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1024);
+      setIsDesktop(window.innerWidth >= 1400);
     };
 
     window.addEventListener("resize", handleResize);
