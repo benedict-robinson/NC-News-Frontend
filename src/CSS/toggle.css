@@ -42,5 +42,6 @@
   }
   
   .theme-checkbox:checked {
+    border: 1px solid white;
     background-position: 100%;
   }
