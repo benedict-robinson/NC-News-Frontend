@@ -2,7 +2,7 @@
 
 **Hello, Welcome to the NC-News Frontend Web Application repository!** 
 
-The live site can be found here: https://all-quiet-on-the-western-frontend.netlify.app/ - Please wait up to a minute for the articles to load.
+The live site can be found here: https://all-quiet-on-the-western-frontend.netlify.app/ - *Please wait up to a minute for the articles to load.*
 
 Made for the Northcoders Frontend Review Project, this repository is a frontend interface that provides an interactive, user-friendly experience allowing the user to view and manage the data in the Backend API Project found here: https://github.com/benedict-robinson/NC-News-Backend.
 
