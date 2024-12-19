@@ -1,9 +1,28 @@
+body.light button {
+  border: 2px solid #000;
+  color: rgb(43, 43, 43);
+  background-color: transparent;
+}
+
+body.light button:hover {
+  background-color: black;
+  color: white;
+}
+
+body.dark button {
+  border: 2px solid rgba(204, 202, 202, 0.925);
+  color: rgba(204, 202, 202, 0.925);
+  background-color: transparent;
+}
+
+body.dark button:hover {
+  background-color: #fffffff3;
+  color: black;
+}
+
 #vote-delete-buttons {
-    background-color: transparent;
-    border: 2px solid #000;
     border-radius: 8px;
     box-sizing: border-box;
-    color: rgb(43, 43, 43);
     cursor: pointer;
     display: inline-block;
     font-weight: 700;
@@ -73,16 +92,16 @@
   }
   
   #vote-delete-buttons:hover {
-    color: white;
-    background: black;
+    /* color: white;
+    background: black; */
     width: 42px;
     height: 30px;
   }
   
-  #vote-delete-buttons:hover .text {
+  /* #vote-delete-buttons:hover .text {
     color: white;
     padding-left: 1.5em;
-  }
+  } */
   
   #vote-delete-buttons:hover .top-key {
     left: -2px;

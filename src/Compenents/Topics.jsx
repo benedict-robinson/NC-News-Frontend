@@ -4,6 +4,7 @@ import TopicsList from "./TopicsList"
 
 export default function Topics() {
   const [topics, setTopics] = useState([])
+  const [isLoading, setIsLoading] = useState(true)
 
   useEffect(() => {
     getTopics().then((response) => {
@@ -12,7 +13,16 @@ export default function Topics() {
     .catch((err) => {
       console.log(err)
     })
+    .finally(() => {
+      setIsLoading(false)
+    })
   }, [])
+
+  if (isLoading) {
+    return (
+      <span className="loader"></span>
+    )
+  }
 
   return (
     <section>
