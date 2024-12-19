@@ -22,7 +22,7 @@ function postArticle(articleObj) {
     articleObj.created_at = Date.now()
     return api.post("/articles", articleObj)
     .then(response => {
-        return response
+        return response.data.article
     })
 }
 

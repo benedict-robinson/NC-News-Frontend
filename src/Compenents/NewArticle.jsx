@@ -13,6 +13,7 @@ export default function NewArticle() {
     const [showAlert, setShowAlert] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
     const [errMsg, setErrMsg] = useState(false)
+    const [newArticleId, setNewArticleId] = useState(null)
 
     useEffect(() => {
         getTopics().then((response) => {
@@ -26,7 +27,6 @@ export default function NewArticle() {
     }, [])
 
     function handleInput(e) {
-        console.log(newArticle)
         const key = e.target.id
         const value = e.target.value
         setNewArticle({ ...newArticle, [key]: value })
@@ -40,9 +40,9 @@ export default function NewArticle() {
     function handleSubmit(e) {
         e.preventDefault();
         postArticle(newArticle)
-        .then(() => {
+        .then((response) => {
+            setNewArticleId(response.article_id)
             setShowAlert(true)
-            console.log("success!")
         })
         .catch((err) => {
             setErrMsg(true)
@@ -58,7 +58,7 @@ export default function NewArticle() {
 
     if (showAlert) {
         return (
-            <ArticlePostedAlert />
+            <ArticlePostedAlert setShowAlert={setShowAlert} id={newArticleId}/>
         )
     }
 
@@ -86,7 +86,7 @@ export default function NewArticle() {
                 )}
                 <br />
             </form>
-            <button onClick={handleSubmit} disabled={newArticle.title && newArticle.body && newArticle.topic}>Post</button>
+            <button onClick={handleSubmit} disabled={!newArticle.title || !newArticle.body || !newArticle.topic}>Post</button>
         </section>
     )
 }
