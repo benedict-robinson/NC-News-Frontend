@@ -3,7 +3,6 @@ import PostAndSignIn from './Compenents/PostAndSignIn'
 import NavBar from './Compenents/NavBar'
 import RouteManager from './Compenents/RouteManager'
 import { useEffect, useState } from 'react';
-import ThemeToggle from './Compenents/ThemeToggle';
 
 function App() {
 

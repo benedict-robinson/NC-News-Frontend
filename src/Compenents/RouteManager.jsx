@@ -8,6 +8,7 @@ import ArticlesByTopic from './ArticlesByTopic';
 import { useState } from 'react';
 import NewTopic from './NewTopic';
 import ErrorHandle from './ErrorHandle';
+import NewArticle from './NewArticle';
 
 export default function StateManager() {
   
@@ -23,6 +24,7 @@ export default function StateManager() {
         <Route path="/newtopic" element={<NewTopic />}/>
         <Route path="/:topic_slug/articles" element={<ArticlesByTopic />}/>
         <Route path="*" element={<ErrorHandle error={"Invalid Route"}/>} />
+        <Route path="/newArticle" element={<NewArticle />} />
     </Routes>
     </div>
   )
