@@ -23,9 +23,11 @@
   }
   body.dark {
     background-color: var(--text-color);
-    color: var(--background-color);
+    color: rgba(204, 202, 202, 0.925);
   }
-
+  body.dark input {
+    color: whitesmoke;
+  }
   a {
     color: rgb(43, 43, 43); 
     text-decoration: none;
@@ -87,6 +89,10 @@
     margin-left: 15px;
     border: 2px solid black;
     border-radius: 50px;
+  }
+
+  body.dark #user-image {
+    background-color: whitesmoke;
   }
   
   .navBar {
@@ -160,6 +166,9 @@
     margin: 5px; 
     width: 100%;
     color: rgb(61, 60, 60);
+  }
+  body.dark #article-subtitle {
+    color: rgba(204, 202, 202, 0.925);
   }
   .article-card:hover {
     color: white;
@@ -264,6 +273,9 @@
   #comment-author {
     font-size: 14px;
     color: black;
+  }
+  body.dark #comment-author {
+    color: rgba(204, 202, 202, 0.925);
   }
   .topic-list-container {
     display: flex;
