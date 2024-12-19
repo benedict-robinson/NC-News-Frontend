@@ -24,7 +24,6 @@ export default function ArticlesByTopic() {
     useEffect(() => {
         setIsLoading(true)
         getTopics().then((response) => {
-            console.log("here")
             const current = response.filter(topic => topic.slug === topic_slug)
             setCurrTopic(current)
             const topicSlugs = response.map(topic => {
