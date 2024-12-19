@@ -1,10 +1,30 @@
 
-#new-article-button {
-  background-color: transparent;
+body.light button {
   border: 2px solid #000;
+  color: rgb(43, 43, 43);
+  background-color: transparent;
+}
+
+body.light button:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Dark theme styles */
+body.dark button {
+  border: 2px solid #fff;
+  color: #fff;
+  background-color: transparent;
+}
+
+body.dark button:hover {
+  background-color: white;
+  color: black;
+}
+
+#new-article-button {
   border-radius: 8px;
   box-sizing: border-box;
-  color: rgb(43, 43, 43);
   cursor: pointer;
   display: inline-block;
   font-weight: 700;
@@ -22,6 +42,10 @@
   font-size: 13px;
   width: 100px;
   box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+#new-article-button.dark {
+  color: white;
 }
 
 #new-article-button .text {
@@ -72,7 +96,7 @@
     right 0.3s ease-out;
 }
 
-#new-article-button:hover {
+/* #new-article-button:hover {
   color: white;
   background: black;
 }
@@ -80,7 +104,7 @@
 #new-article-button:hover .text {
   color: white;
   padding-left: 1.5em;
-}
+} */
 
 #new-article-button:hover .top-key {
   left: -2px;
