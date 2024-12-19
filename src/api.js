@@ -18,6 +18,14 @@ function fecthArticleById(id) {
     })
 }
 
+function postArticle(articleObj) {
+    articleObj.created_at = Date.now()
+    return api.post("/articles", articleObj)
+    .then(response => {
+        return response
+    })
+}
+
 function patchArticleVoteCount(id, votesObj) {
     return api.patch(`/articles/${id}`, votesObj)
     .then((response) => {
@@ -93,5 +101,6 @@ export {
     deleteComment,
     getTopics,
     fetchArticlesByTopic,
-    postNewTopic
+    postNewTopic,
+    postArticle
 }

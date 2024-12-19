@@ -112,14 +112,14 @@ body.dark button:hover {
   }
 
   #new-topic-button:disabled {
-    background-color: #e0e0e0; /* Light gray background */
-    color: #a0a0a0; /* Muted text color */
-    border-color: #d0d0d0; /* Muted border color */
-    cursor: not-allowed; /* Indicate the button is not clickable */
-    box-shadow: none; /* Remove shadow for a flat appearance */
-    opacity: 0.7; /* Reduce opacity for a disabled look */
+    background-color: #e0e0e0; 
+    color: #a0a0a0; 
+    border-color: #d0d0d0; 
+    cursor: not-allowed; 
+    box-shadow: none; 
+    opacity: 0.7; 
 }
 
 #new-topic-button:disabled .text {
-    color: #a0a0a0; /* Muted color for inner text */
+    color: #a0a0a0; 
 }
