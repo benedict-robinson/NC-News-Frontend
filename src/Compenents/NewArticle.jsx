@@ -3,6 +3,7 @@ import { getTopics, postArticle, postNewTopic } from "../api"
 import { UserContext } from "./UserContext"
 import ArticlePostedAlert from "./ArticlePostedAlert"
 import { useLocation } from "react-router-dom"
+import "../CSS/post-article-button.css"
 
 export default function NewArticle(props) {
     const location = useLocation()
@@ -69,7 +70,7 @@ export default function NewArticle(props) {
     return (
         <section className="new-article-form">
             <h2>New Article</h2>
-            <form>
+            <form className="article-form">
                 {!topic ?
                 <select id="topic" onChange={handleInput} required>
                     <option value="">Select a Topic</option>
@@ -100,7 +101,7 @@ export default function NewArticle(props) {
                 )}
                 <br />
             </form>
-            <button onClick={handleSubmit} disabled={!newArticle.title || !newArticle.body || !newArticle.topic}>Post</button>
+            <button id="post-article-button" onClick={handleSubmit} disabled={!newArticle.title || !newArticle.body || !newArticle.topic}>Post</button>
         </section>
     )
 }
