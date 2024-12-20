@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react"
 import { patchArticleVoteCount } from "../api"
+import "../CSS/vote-and-delete-bttns.css"
 
 export default function ArticleVotes({id, initialVotes}) {
     const [voteCount, setVoteCount] = useState(0)
@@ -61,10 +62,10 @@ export default function ArticleVotes({id, initialVotes}) {
   return (
     <div>
         <label>Total Votes: {voteCount} &nbsp; </label>
-        <button onClick={() => {
+        <button id="vote-delete-buttons" onClick={() => {
             upVote(id)
         }} className={isPressedUp ? "button-pressed" : ""}>⬆️</button>
-        <button onClick={() => {
+        <button id="vote-delete-buttons" onClick={() => {
             downVote(id)
         }} className={isPressedDown ? "button-pressed" : ""}>⬇️</button>
         <p>{error}</p>  

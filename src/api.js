@@ -26,6 +26,13 @@ function postArticle(articleObj) {
     })
 }
 
+function deleteArticle(id) {
+    return api.delete(`/articles/${id}`)
+    .then(response => {
+        return response
+    })
+}
+
 function patchArticleVoteCount(id, votesObj) {
     return api.patch(`/articles/${id}`, votesObj)
     .then((response) => {
@@ -102,5 +109,6 @@ export {
     getTopics,
     fetchArticlesByTopic,
     postNewTopic,
-    postArticle
+    postArticle,
+    deleteArticle
 }
