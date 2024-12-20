@@ -1,14 +1,18 @@
 import { useEffect, useState, useContext } from "react"
-import { getTopics, postArticle } from "../api"
+import { getTopics, postArticle, postNewTopic } from "../api"
 import { UserContext } from "./UserContext"
 import ArticlePostedAlert from "./ArticlePostedAlert"
+import { useLocation } from "react-router-dom"
 
-export default function NewArticle() {
+export default function NewArticle(props) {
+    const location = useLocation()
+    const { topic } = location.state || ""
     const [topics, setTopics] = useState([])
     const { user } = useContext(UserContext)
     const [newArticle, setNewArticle] = useState({
         author: user.username,
-        votes: 0
+        votes: 0,
+        topic: topic || null
     })
     const [showAlert, setShowAlert] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
@@ -66,12 +70,22 @@ export default function NewArticle() {
         <section className="new-article-form">
             <h2>New Article</h2>
             <form>
+                {!topic ?
                 <select id="topic" onChange={handleInput} required>
                     <option value="">Select a Topic</option>
                     {topics.map((topic) => {
                         return <option value={topic.slug} key={topic.slug}>{topic.slug}</option>
                     })}
+                </select> :
+                <select id="topic" onChange={handleInput} required>
+                    <option value={topic} selected>{topic}</option>
+                    {topics.map(t => {
+                        if (t.slug !== topic) {
+                        return <option value={topic.slug} key={topic.slug}>{topic.slug}</option>
+                        }
+                    })}
                 </select>
+                }
                 <input type="text" id="title" placeholder="Title" onInput={handleInput} required></input>
                 <br></br>
                 <input type="text" id="body" placeholder="Body" onInput={handleInput} required></input>
