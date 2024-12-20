@@ -1,5 +1,4 @@
 body.light button {
-  border: 2px solid #000;
   color: rgb(43, 43, 43);
   background-color: transparent;
 }
@@ -40,7 +39,7 @@ body.dark button:hover {
     font-size: 13px;
     width: 40px;
     height: 27px;
-    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.2);
   }
   
   #vote-delete-buttons .text {
