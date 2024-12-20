@@ -89,9 +89,9 @@ export default function NewArticle(props) {
                 }
                 <input type="text" id="title" placeholder="Title" onInput={handleInput} required></input>
                 <br></br>
-                <input type="text" id="body" placeholder="Body" onInput={handleInput} required></input>
+                <textarea type="text" id="body" placeholder="Body" onInput={handleInput} required></textarea>
                 <br></br>
-                <label htmlFor="article_img_url">Upload an Image:</label>
+                <label id="img-label" htmlFor="article_img_url">Upload an Image:</label>
                 <input type="file" id="article_img_url" accept="image/*" onChange={handleInput}/>
                 {newArticle.article_img_url && (
                     <div>
