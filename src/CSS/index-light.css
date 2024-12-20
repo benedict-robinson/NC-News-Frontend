@@ -345,6 +345,12 @@
     width: 660px;
   }
 
+  .new-article-form {
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+  }
+
   @media (max-width: 767px) {
     body {
       margin-left: 3em;
