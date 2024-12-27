@@ -16,7 +16,8 @@ export default function ArticlePage() {
     const { article_id } = useParams()
     const { user } = useContext(UserContext)
     const [isErr, setIsErr] = useState(false)
-    
+    const [articleDeleted, setArticleDeleted] = useState(false)
+
     useEffect(() => {
         setIsLoading(true)
         fecthArticleById(article_id).then((response) => {
@@ -35,6 +36,14 @@ export default function ArticlePage() {
           <span className="loader"></span>  
         )
     }
+    if (articleDeleted) {
+        return (
+            <>
+                <h2>Article Deleted</h2>
+                <button>Home</button>
+            </>
+        )
+    }
     if (!isErr) {
     const formattedDate = format(currentArticle.created_at, 'HH:mm dd/MM/yyyy')
     
@@ -48,7 +57,7 @@ export default function ArticlePage() {
             <img src={currentArticle.article_img_url} />
             <p>{currentArticle.body}</p>
             <ArticleVotes id={currentArticle.article_id} initialVotes={currentArticle.votes}/>
-            {currentArticle.author === user.username ? <span><ArticleDelete article_id={currentArticle.article_id} /><br></br></span> : <br></br>}
+            {currentArticle.author === user.username ? <span><ArticleDelete article_id={currentArticle.article_id} setArticleDeleted={setArticleDeleted}/><br></br></span> : <br></br>}
             <br></br> 
             </div>
             <CommentList currentArticle={currentArticle}/>

@@ -3,7 +3,7 @@ import { deleteArticle } from "../api"
 
 
 
-export default function ArticleDelete({ article_id }) {
+export default function ArticleDelete({ article_id, setArticleDeleted }) {
     const errorMsg = "Couldn't Delete Comment - Please Try Again"
     const [isErr, setIsErr] = useState(false)
     const [showAlert, setShowAlert] = useState(false)
@@ -14,6 +14,9 @@ export default function ArticleDelete({ article_id }) {
 
     function handleDelete(id) {
         deleteArticle(id)
+        .then(() => {
+            setArticleDeleted(true)
+        })
         .catch((err) => {
             setIsErr(true)
         })
