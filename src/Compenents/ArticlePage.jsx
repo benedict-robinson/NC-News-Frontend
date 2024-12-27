@@ -1,13 +1,13 @@
 import { useContext, useEffect, useState } from "react"
 import { fecthArticleById } from "../api"
 import CommentList from "./CommentList"
-import { useParams } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import ArticleVotes from "./ArticleVotes"
 import { format } from "date-fns"
 import ErrorHandle from "./ErrorHandle"
 import { UserContext } from "./UserContext"
 import ArticleDelete from "./ArticleDelete"
-
+import "../CSS/home-deleted.css"
 
 
 export default function ArticlePage() {
@@ -17,6 +17,7 @@ export default function ArticlePage() {
     const { user } = useContext(UserContext)
     const [isErr, setIsErr] = useState(false)
     const [articleDeleted, setArticleDeleted] = useState(false)
+    const navigate = useNavigate()
 
     useEffect(() => {
         setIsLoading(true)
@@ -38,10 +39,10 @@ export default function ArticlePage() {
     }
     if (articleDeleted) {
         return (
-            <>
+            <div className="after-delete">
                 <h2>Article Deleted</h2>
-                <button>Home</button>
-            </>
+                <button id="home-button" onClick={() => { navigate("/") }}>Home</button>
+            </div>
         )
     }
     if (!isErr) {

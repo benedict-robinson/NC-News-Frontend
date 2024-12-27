@@ -465,6 +465,16 @@ form {
   margin-bottom: 20px;
 }
 
+.after-delete {
+  padding: 10px;
+  width: 300px;
+  padding-left: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 @media (max-width: 767px) {
   body {
     margin-left: 3em;
