@@ -13,18 +13,20 @@ export default function UserPage() {
     fetchCommentsByUsername(user.username)
       .then(({ comments }) => {
         setUserComments(comments)
-        comments.forEach(comment => {
-          setCommentVotes(curr => curr + comment.votes)
-        })
       })
     fetchArticles("")
-    .then((articles) => {
-      setUserArticles(articles)
-      articles.forEach(article => {
-        setArticleVotes(curr => curr + article.votes)
+      .then((articles) => {
+        setUserArticles(articles.filter(article => article.author === user.username))
       })
-    })
   }, [])
+
+  useEffect(() => {
+    const totalArticleVotes = userArticles.reduce((total, article) => total + article.votes, 0)
+    const totalCommentVotes = userComments.reduce((total, comment) => total + comment.votes, 0)
+
+    setArticleVotes(totalArticleVotes)
+    setCommentVotes(totalCommentVotes)
+  }, [userArticles, userComments])
 
   return (
     <div>
