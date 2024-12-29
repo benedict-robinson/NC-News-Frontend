@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { UserContext } from "./UserContext"
+import { UserContext } from "../Contexts/UserContext"
 import { postNewComment } from "../api"
 import "../CSS/post-comment-button.css"
 

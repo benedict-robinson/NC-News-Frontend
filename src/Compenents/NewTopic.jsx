@@ -1,7 +1,7 @@
 import { useContext, useState } from "react"
 import { postNewTopic } from "../api";
 import { useNavigate } from "react-router-dom";
-import { UserContext } from "./UserContext";
+import { UserContext } from "../Contexts/UserContext"
 import "../CSS/new-topic-button.css"
 
 export default function NewTopic() {

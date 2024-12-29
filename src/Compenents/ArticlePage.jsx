@@ -5,7 +5,7 @@ import { useNavigate, useParams } from "react-router-dom"
 import ArticleVotes from "./ArticleVotes"
 import { format } from "date-fns"
 import ErrorHandle from "./ErrorHandle"
-import { UserContext } from "./UserContext"
+import { UserContext } from "../Contexts/UserContext"
 import ArticleDelete from "./ArticleDelete"
 import "../CSS/home-deleted.css"
 
