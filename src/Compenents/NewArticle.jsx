@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react"
 import { getTopics, postArticle, postNewTopic } from "../api"
-import { UserContext } from "./UserContext"
+import { UserContext } from "../Contexts/UserContext"
 import ArticlePostedAlert from "./ArticlePostedAlert"
 import { useLocation } from "react-router-dom"
 import "../CSS/post-article-button.css"

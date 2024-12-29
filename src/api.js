@@ -47,6 +47,13 @@ function fetchComments(id) {
     })
 }
 
+function fetchCommentsByUsername(username) {
+    return api.get(`/users/${username}/comments`)
+    .then(({data}) => {
+        return data
+    })
+}
+
 function patchCommentVoteCount(id, votesObj) {
     return api.patch(`/comments/${id}`, votesObj)
     .then((response) => {
@@ -110,5 +117,6 @@ export {
     fetchArticlesByTopic,
     postNewTopic,
     postArticle,
-    deleteArticle
+    deleteArticle,
+    fetchCommentsByUsername
 }
