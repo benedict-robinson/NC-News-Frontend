@@ -31,7 +31,7 @@ export default function UserPage() {
 
     setArticleVotes(totalArticleVotes)
     setCommentVotes(totalCommentVotes)
-    setMostPopularArticle(highestVotedArticle)
+    setMostPopularArticle(highestVotedArticle || null)
     setIsLoading(false)
   }, [userArticles, userComments])
 
