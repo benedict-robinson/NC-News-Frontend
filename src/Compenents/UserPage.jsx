@@ -4,6 +4,7 @@ import { fetchArticles, fetchCommentsByUsername } from "../api"
 import ArticleCard from "./ArticleCard"
 import "../CSS/loader.css"
 import UserEditAndSignOut from "./UserEditAndSignOut"
+import "../CSS/user-page.css"
 
 export default function UserPage() {
   const { user } = useContext(UserContext)
@@ -44,23 +45,29 @@ export default function UserPage() {
 
   return (
     <section className="profile-page">
-      <div className="profile-names">
-        <h2>{user.username}</h2>
-        <p>{user.name}</p>
-      </div>
-      <img src={user.avatar_url} alt={user.username} />
-      <UserEditAndSignOut />
-      <div className="stats">
-        <h3>Stats</h3>
-        <p>Articles: &nbsp; {userArticles.length}</p>
-        <p>Votes on Articles: &nbsp; {articleVotes}</p>
-        <p>Comments: &nbsp; {userComments.length}</p>
-        <p>Votes on Comments: &nbsp; {commentVotes}</p>
-        <p>Total Votes: &nbsp; {commentVotes + articleVotes}</p>
-      </div>
-      <div className="most-popular-article">
-      <h3>Most Popular Article</h3>
-      {mostPopularArticle ? <ArticleCard article={mostPopularArticle} key={mostPopularArticle.article_id} /> : <p>No Articles Yet</p>}
+      <div className="profile-container">
+        <div className="profile-left">
+          <div className="profile-names">
+            <h2>{user.username}</h2>
+            <p>{user.name}</p>
+          </div>
+          <div className="stats">
+            <h3>Stats</h3>
+            <p>Articles: &nbsp; {userArticles.length}</p>
+            <p>Votes on Articles: &nbsp; {articleVotes}</p>
+            <p>Comments: &nbsp; {userComments.length}</p>
+            <p>Votes on Comments: &nbsp; {commentVotes}</p>
+            <p>Total Votes: &nbsp; {commentVotes + articleVotes}</p>
+          </div>
+        </div>
+        <div className="profile-right">
+          <UserEditAndSignOut className="user-controls" />
+          <img src={user.avatar_url} alt={user.username} />
+          <div className="most-popular-article">
+            <h3>Most Popular Article</h3>
+            {mostPopularArticle ? <ArticleCard article={mostPopularArticle} key={mostPopularArticle.article_id} id="user-page-article" /> : <p>No Articles Yet</p>}
+          </div>
+        </div>
       </div>
     </section>
   )
