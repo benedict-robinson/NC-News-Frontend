@@ -3,6 +3,7 @@ import { UserContext } from "../Contexts/UserContext"
 import { fetchArticles, fetchCommentsByUsername } from "../api"
 import ArticleCard from "./ArticleCard"
 import "../CSS/loader.css"
+import UserEditAndSignOut from "./UserEditAndSignOut"
 
 export default function UserPage() {
   const { user } = useContext(UserContext)
@@ -48,6 +49,7 @@ export default function UserPage() {
         <p>{user.name}</p>
       </div>
       <img src={user.avatar_url} alt={user.username} />
+      <UserEditAndSignOut />
       <div className="stats">
         <h3>Stats</h3>
         <p>Articles: &nbsp; {userArticles.length}</p>
