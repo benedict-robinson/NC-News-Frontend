@@ -1,10 +1,20 @@
 .edit-sign-out-buttons {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 .edit-sign-out-buttons button {
-    width: 4.5em;
-    padding: 2px;
-    margin: 1px;
-    border-radius: 8px;
+  width: 4.5em;
+  padding: 2px;
+  margin: 1px;
+  border-radius: 8px;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 0.3em 0.1em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
 }
