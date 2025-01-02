@@ -152,3 +152,8 @@ body.dark .profile-right img {
   padding: 2px;
   padding-right: 5px;
 }
+
+#edit-button {
+  border-radius: 8px;
+  transition: all 0.1s ease-in-out;
+}

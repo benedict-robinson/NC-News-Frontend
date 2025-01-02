@@ -14,6 +14,7 @@ export default function UserPage() {
   const [commentVotes, setCommentVotes] = useState(0)
   const [mostPopularArticle, setMostPopularArticle] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isEditing, setIsEditing] = useState(false)
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
@@ -48,8 +49,8 @@ export default function UserPage() {
       <div className="profile-container">
         <div className="profile-left">
           <div className="profile-names">
-            <h2>{user.username}</h2>
-            <p>{user.name}</p>
+            <h2>{user.username}<span>{isEditing ? <button id="edit-button">✏️</button> : <></>}</span></h2>
+            <p>{user.name}<span>{isEditing ? <button id="edit-button">✏️</button> : <></>}</span></p>
           </div>
           <div className="stats">
             <h3>Stats</h3>
@@ -61,8 +62,9 @@ export default function UserPage() {
           </div>
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" />
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing}/>
           <img src={user.avatar_url} alt={user.username} />
+          {isEditing ? <button id="edit-button">✏️</button> : <></>}
           <div className="most-popular-article">
             <h3>Most Popular Article</h3>
             {mostPopularArticle ? <ArticleCard article={mostPopularArticle} key={mostPopularArticle.article_id} id="user-page-article" /> : <p>No Articles Yet</p>}
