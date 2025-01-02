@@ -1,9 +1,9 @@
 import "../CSS/user-page-buttons.css"
 
-export default function UserEditAndSignOut() {
+export default function UserEditAndSignOut({ isEditing, setIsEditing }) {
   return (
     <div className='edit-sign-out-buttons'>
-        <button>Edit</button>
+        <button onClick={() => {setIsEditing(curr => !curr)}}>{isEditing ? "Save" : "Edit"}</button>
         <button>Sign Out</button>
     </div>
   )
