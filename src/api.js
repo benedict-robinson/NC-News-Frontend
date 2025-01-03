@@ -97,10 +97,23 @@ function fetchArticlesByTopic(slug, sortQuery) {
 }
 
 function postNewTopic(topicObj) {
-    console.log(topicObj)
     return api.post("/topics",topicObj)
     .then(({data}) => {
         return data.topic
+    })
+}
+
+function patchUser(userObj, username) {
+    return api.patch(`/users/${username}`, userObj)
+    .then((response) => {
+        return response
+    })
+}
+
+function getUsers() {
+    return api.get("/users")
+    .then(({data}) => {
+        return data.users
     })
 }
 
@@ -118,5 +131,7 @@ export {
     postNewTopic,
     postArticle,
     deleteArticle,
-    fetchCommentsByUsername
+    fetchCommentsByUsername,
+    patchUser,
+    getUsers
 }

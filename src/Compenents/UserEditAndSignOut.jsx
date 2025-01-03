@@ -1,3 +1,4 @@
+import { getUsers } from "../api"
 import "../CSS/user-page-buttons.css"
 
 export default function UserEditAndSignOut({ isEditing, setIsEditing }) {

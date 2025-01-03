@@ -62,6 +62,15 @@ body.dark .profile-container {
   background-color: #f9f9f9;
 }
 
+.profile-names #name {
+  border: 1px solid #ccc;
+  padding: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 1.5rem;
+  text-align: center;
+}
+
 .profile-right img {
   width: 300px;
   height: 300px;
