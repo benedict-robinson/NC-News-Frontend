@@ -1,13 +1,13 @@
 import { useContext, useState, useEffect } from "react"
 import { UserContext } from "../Contexts/UserContext"
-import { fetchArticles, fetchCommentsByUsername } from "../api"
+import { fetchArticles, fetchCommentsByUsername, getUsers, patchUser } from "../api"
 import ArticleCard from "./ArticleCard"
 import "../CSS/loader.css"
 import UserEditAndSignOut from "./UserEditAndSignOut"
 import "../CSS/user-page.css"
 
 export default function UserPage() {
-  const { user } = useContext(UserContext)
+  const { user, setUser } = useContext(UserContext)
   const [userComments, setUserComments] = useState([])
   const [userArticles, setUserArticles] = useState([])
   const [articleVotes, setArticleVotes] = useState(0)
@@ -15,6 +15,8 @@ export default function UserPage() {
   const [mostPopularArticle, setMostPopularArticle] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
+  const [editName, setEditName] = useState(false)
+  const [newName, setNewName] = useState("")
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
@@ -38,6 +40,25 @@ export default function UserPage() {
     setIsLoading(false)
   }, [userArticles, userComments])
 
+  function handleNameEdit() {
+    if (editName) {
+      patchUser({name: newName}, user.username)
+      .then((response) => {
+        getUsers().then((users) => {
+          const newUser = users.filter(element => element.username === user.username)
+          setUser({...newUser})
+        })
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    }
+    setEditName(curr => !curr)
+  }
+  function updateName(e) {
+    setNewName(e.target.value)
+  }
+
   if (isLoading) {
     return (
       <span className="loader"></span>
@@ -49,8 +70,13 @@ export default function UserPage() {
       <div className="profile-container">
         <div className="profile-left">
           <div className="profile-names">
-            <h2>{user.username}<span>{isEditing ? <button id="edit-button">✏️</button> : <></>}</span></h2>
-            <p>{user.name}<span>{isEditing ? <button id="edit-button">✏️</button> : <></>}</span></p>
+            <h2>{user.username}</h2>
+            {!editName ?
+              <p>{user.name}<span>{isEditing ? <button id="edit-button" onClick={handleNameEdit}>{!editName ? "✏️" : "Save"}</button> : <></>}</span></p> :
+              <>
+                <input id="name" type="text" placeholder={`Set Name...`} onChange={updateName}></input><span>{isEditing ? <button id="edit-button" onClick={handleNameEdit}>{!editName ? "✏️" : "Save"}</button> : <></>}</span>
+              </>
+            }
           </div>
           <div className="stats">
             <h3>Stats</h3>
@@ -62,9 +88,9 @@ export default function UserPage() {
           </div>
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing}/>
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} />
           <img src={user.avatar_url} alt={user.username} />
-          {isEditing ? <button id="edit-button">✏️</button> : <></>}
+          {isEditing ? <button id="edit-button" onClick={handleNameEdit}>✏️</button> : <></>}
           <div className="most-popular-article">
             <h3>Most Popular Article</h3>
             {mostPopularArticle ? <ArticleCard article={mostPopularArticle} key={mostPopularArticle.article_id} id="user-page-article" /> : <p>No Articles Yet</p>}
