@@ -1,14 +1,16 @@
 import { createContext, useEffect, useState } from "react";
+import { getUsers } from "../api";
 
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-
-  const [user, setUser] = useState({
-    "username": "tickle122",
-    "name": "Tom Tickle",
-    "avatar_url": "https://vignette.wikia.nocookie.net/mrmen/images/d/d6/Mr-Tickle-9a.png/revision/latest?cb=20180127221953"
-    });
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    getUsers().then((response) => {
+      const [currentUser] = response.filter(e => e.username === "tickle122")
+      setUser(currentUser)
+    })
+  }, [])
 
   return (
     <UserContext.Provider value={{ user, setUser }}>
