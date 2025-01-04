@@ -5,6 +5,7 @@ import ArticleCard from "./ArticleCard"
 import "../CSS/loader.css"
 import UserEditAndSignOut from "./UserEditAndSignOut"
 import "../CSS/user-page.css"
+import Stats from "./Stats"
 
 export default function UserPage() {
   const { user, setUser } = useContext(UserContext)
@@ -19,15 +20,28 @@ export default function UserPage() {
   const [editImg, setEditImg] = useState(false)
   const [newName, setNewName] = useState("")
   const [newImg, setNewImg] = useState("")
+  const [errMsg, setErrMsg] = useState("")
+  const [articlesErr, setArticlesErr] = useState(false)
+  const [commentsErr, setCommentsErr] = useState(false)
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
       .then(({ comments }) => {
         setUserComments(comments)
+        setCommentsErr(false)
+      })
+      .catch((err) => {
+        setCommentsErr(true)
+        console.log(err)
       })
     fetchArticles("")
       .then((articles) => {
         setUserArticles(articles.filter(article => article.author === user.username))
+        setArticlesErr(false)
+      })
+      .catch((err) => {
+        setArticlesErr(true)
+        console.log(err)
       })
   }, [user])
 
@@ -77,6 +91,12 @@ export default function UserPage() {
     )
   }
 
+  if (errMsg) {
+    return (
+      <p>{errMsg}</p>
+    )
+  }
+
   return (
     <section className="profile-page">
       <div className="profile-container">
@@ -90,17 +110,10 @@ export default function UserPage() {
               </>
             }
           </div>
-          <div className="stats">
-            <h3>Stats</h3>
-            <p id="stat-name">Articles &nbsp; <span id="stat-value">{userArticles.length}</span></p>
-            <p id="stat-name">Votes on Articles &nbsp; <span id="stat-value">{articleVotes}</span></p>
-            <p id="stat-name">Comments &nbsp; <span id="stat-value">{userComments.length}</span></p>
-            <p id="stat-name">Votes on Comments &nbsp; <span id="stat-value">{commentVotes}</span></p>
-            <p id="stat-name">Total Votes &nbsp; <span id="stat-value">{commentVotes + articleVotes}</span></p>
-          </div>
+          {!articlesErr && !commentsErr ? <Stats userArticles={userArticles} articleVotes={articleVotes} userComments={userComments} commentVotes={commentVotes}/> : <p>Error - Failed to Load Stats</p>}
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} />
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} setErrMsg={setErrMsg}/>
           <img src={!editImg ? user.avatar_url : newImg} alt={user.username} />
           {isEditing ? <button id="edit-button" onClick={handleImgEdit}>{!editImg ? "✏️" : "Save"}</button> : <></>}
           {!editImg ? <></> : <input type="file" id="article_img_url" accept="image/*" onChange={updateImg}/>}
