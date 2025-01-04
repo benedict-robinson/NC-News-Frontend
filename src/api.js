@@ -104,7 +104,7 @@ function postNewTopic(topicObj) {
 }
 
 function patchUser(userObj, username) {
-    return api.patch(`/users/${username}`, userObj)
+    return api.patch(`/userz/${username}`, userObj)
     .then((response) => {
         return response
     })

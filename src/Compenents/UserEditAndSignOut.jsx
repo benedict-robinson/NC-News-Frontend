@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 import { getUsers, patchUser } from "../api"
 import "../CSS/user-page-buttons.css"
 
-export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setUser }) {
+export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setUser, setErrMsg }) {
   const [oldUser, setOldUser] = useState({})
 
   useEffect(() => {
@@ -14,6 +14,7 @@ export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setU
       setOldUser(user)
       patchUser(user, user.username)
       .catch((err) => {
+        setErrMsg("Error - Failed to update user. Please refresh to try again.")
         console.log(err)
       })
     }
