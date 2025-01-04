@@ -70,6 +70,10 @@ body.dark .profile-container {
   font-size: 1.5rem;
   text-align: center;
 }
+body.dark .profile-names #name {
+  color: #333333b0;
+  background-color: rgb(255, 255, 255);
+}
 
 .profile-right img {
   width: 300px;

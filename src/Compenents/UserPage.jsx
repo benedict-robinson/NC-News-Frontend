@@ -16,8 +16,9 @@ export default function UserPage() {
   const [isLoading, setIsLoading] = useState(true)
   const [isEditing, setIsEditing] = useState(false)
   const [editName, setEditName] = useState(false)
+  const [editImg, setEditImg] = useState(false)
   const [newName, setNewName] = useState("")
-  const [oldUser, setOldUser] = useState({...user})
+  const [newImg, setNewImg] = useState("")
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
@@ -55,7 +56,19 @@ export default function UserPage() {
     setNewName(e.target.value)
   }
   function handleImgEdit() {
-
+    if (editImg) {
+      setUser(curr => {
+        const newObj = {...curr}
+        newObj.avatar_url = newImg
+        return newObj
+      })
+    }
+    setEditImg(curr => !curr)
+  }
+  function updateImg(e) {
+    const file = e.target.files[0]
+    const imageUrl = URL.createObjectURL(file)
+    setNewImg(imageUrl)
   }
 
   if (isLoading) {
@@ -87,9 +100,10 @@ export default function UserPage() {
           </div>
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} oldUser={oldUser} setOldUser={setOldUser}/>
-          <img src={user.avatar_url} alt={user.username} />
-          {isEditing ? <button id="edit-button" onClick={handleNameEdit}>✏️</button> : <></>}
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} />
+          <img src={!editImg ? user.avatar_url : newImg} alt={user.username} />
+          {isEditing ? <button id="edit-button" onClick={handleImgEdit}>{!editImg ? "✏️" : "Save"}</button> : <></>}
+          {!editImg ? <></> : <input type="file" id="article_img_url" accept="image/*" onChange={updateImg}/>}
           <div className="most-popular-article">
             <h3>Most Popular Article</h3>
             {mostPopularArticle ? <ArticleCard article={mostPopularArticle} key={mostPopularArticle.article_id} id="user-page-article" /> : <p>No Articles Yet</p>}

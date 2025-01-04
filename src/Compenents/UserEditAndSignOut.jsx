@@ -1,15 +1,18 @@
+import { useEffect, useState } from "react"
 import { getUsers, patchUser } from "../api"
 import "../CSS/user-page-buttons.css"
 
-export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setUser, oldUser, setOldUser }) {
+export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setUser }) {
+  const [oldUser, setOldUser] = useState({})
+
+  useEffect(() => {
+    setOldUser({...user})
+  }, [user.username])
 
   function submitEdits() {
     if (isEditing) {
       setOldUser(user)
       patchUser(user, user.username)
-      .then((response) => {
-        console.log(response)
-      })
       .catch((err) => {
         console.log(err)
       })
