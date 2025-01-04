@@ -17,6 +17,7 @@ export default function UserPage() {
   const [isEditing, setIsEditing] = useState(false)
   const [editName, setEditName] = useState(false)
   const [newName, setNewName] = useState("")
+  const [oldUser, setOldUser] = useState({...user})
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
@@ -27,7 +28,7 @@ export default function UserPage() {
       .then((articles) => {
         setUserArticles(articles.filter(article => article.author === user.username))
       })
-  }, [])
+  }, [user])
 
   useEffect(() => {
     const totalArticleVotes = userArticles.reduce((total, article) => total + article.votes, 0)
@@ -38,25 +39,23 @@ export default function UserPage() {
     setCommentVotes(totalCommentVotes)
     setMostPopularArticle(highestVotedArticle || null)
     setIsLoading(false)
-  }, [userArticles, userComments])
+  }, [user, userArticles, userComments])
 
   function handleNameEdit() {
     if (editName) {
-      patchUser({name: newName}, user.username)
-      .then((response) => {
-        getUsers().then((users) => {
-          const newUser = users.filter(element => element.username === user.username)
-          setUser({...newUser})
-        })
-      })
-      .catch((err) => {
-        console.log(err)
+      setUser(curr => {
+        const newObj = {...curr}
+        newObj.name = newName
+        return newObj
       })
     }
     setEditName(curr => !curr)
   }
   function updateName(e) {
     setNewName(e.target.value)
+  }
+  function handleImgEdit() {
+
   }
 
   if (isLoading) {
@@ -88,7 +87,7 @@ export default function UserPage() {
           </div>
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} />
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} oldUser={oldUser} setOldUser={setOldUser}/>
           <img src={user.avatar_url} alt={user.username} />
           {isEditing ? <button id="edit-button" onClick={handleNameEdit}>✏️</button> : <></>}
           <div className="most-popular-article">
