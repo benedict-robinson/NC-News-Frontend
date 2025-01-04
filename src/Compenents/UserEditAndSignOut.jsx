@@ -13,9 +13,6 @@ export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setU
     if (isEditing) {
       setOldUser(user)
       patchUser(user, user.username)
-      .then((response) => {
-        console.log(response)
-      })
       .catch((err) => {
         console.log(err)
       })
