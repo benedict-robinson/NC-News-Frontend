@@ -6,6 +6,7 @@ import "../CSS/new-topic-button.css"
 
 export default function NewTopic() {
     const [topicObj, setTopicObj] = useState({})
+    const [errMsg, setErrMsg] = useState("")
     const { user } = useContext(UserContext)
     const navigate = useNavigate()
 
@@ -21,6 +22,7 @@ export default function NewTopic() {
             navigate(`/${topicObj.slug}/articles`)
         })
             .catch((err) => {
+                setErrMsg("Error - Failed to create topic. Please refresh to try again")
                 console.log(err)
             })
     };
@@ -45,6 +47,7 @@ export default function NewTopic() {
                 <br></br>
                 <button id="new-topic-button" onClick={handleSubmit} disabled={!topicObj.slug}>Create</button>
             </form>
+            <p>{errMsg}</p>
         </div>
     )
 }
