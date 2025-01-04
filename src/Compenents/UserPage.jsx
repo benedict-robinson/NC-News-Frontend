@@ -17,7 +17,6 @@ export default function UserPage() {
   const [isEditing, setIsEditing] = useState(false)
   const [editName, setEditName] = useState(false)
   const [newName, setNewName] = useState("")
-  const [oldUser, setOldUser] = useState({...user})
 
   useEffect(() => {
     fetchCommentsByUsername(user.username)
@@ -87,7 +86,7 @@ export default function UserPage() {
           </div>
         </div>
         <div className="profile-right">
-          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} oldUser={oldUser} setOldUser={setOldUser}/>
+          <UserEditAndSignOut className="user-controls" isEditing={isEditing} setIsEditing={setIsEditing} user={user} setUser={setUser} />
           <img src={user.avatar_url} alt={user.username} />
           {isEditing ? <button id="edit-button" onClick={handleNameEdit}>✏️</button> : <></>}
           <div className="most-popular-article">
