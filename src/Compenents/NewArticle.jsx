@@ -17,7 +17,7 @@ export default function NewArticle(props) {
     })
     const [showAlert, setShowAlert] = useState(false)
     const [isLoading, setIsLoading] = useState(true)
-    const [errMsg, setErrMsg] = useState(false)
+    const [errMsg, setErrMsg] = useState("")
     const [newArticleId, setNewArticleId] = useState(null)
 
     useEffect(() => {
@@ -26,6 +26,8 @@ export default function NewArticle(props) {
             setIsLoading(false)
         })
         .catch((err) => {
+            setErrMsg("Error - Failed to load topics. Please refresh and try again")
+            setIsLoading(false)
             console.log(err)
         })
 
@@ -50,7 +52,7 @@ export default function NewArticle(props) {
             setShowAlert(true)
         })
         .catch((err) => {
-            setErrMsg(true)
+            setErrMsg("Error - Failed to post article. Please refresh and try again")
             console.log(err)
         })
     }
@@ -64,6 +66,13 @@ export default function NewArticle(props) {
     if (showAlert) {
         return (
             <ArticlePostedAlert setShowAlert={setShowAlert} id={newArticleId}/>
+        )
+    }
+    if (errMsg) {
+        return (
+            <section className="new-article-form">
+                <p>{errMsg}</p>
+            </section>
         )
     }
 
