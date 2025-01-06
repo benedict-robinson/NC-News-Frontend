@@ -6,6 +6,18 @@ export default function SortBy() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectValue, setSelectValue] = useState(localStorage.getItem("selectValue") ? localStorage.getItem("selectValue") : "")
 
+  const [isWide, setIsWide] = useState(true);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsWide(window.innerWidth >= 1448);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
     function handleChange (event) {
         setSearchParams(event.target.value)
         setSelectValue(event.target.value)
@@ -18,7 +30,7 @@ export default function SortBy() {
   return (
     <div className="sort-container">
     <div className="sort-controls">
-        <label>Sorted by:&nbsp; </label>
+        {isWide ? <label>Sorted by:&nbsp; </label> : <></>}
         <select value={selectValue} onChange={handleChange}>
             <option value={""}>Newest</option>
             <option value={"?order=asc"}>Oldest</option>

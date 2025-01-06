@@ -14,7 +14,7 @@ export default function NavList() {
                 return <NavBarCard topic={navTopic} key={navTopic}/>
             })}
             <Link to="/newtopic">
-            <li className="nav-list-item">New Topic +</li>
+            <li className="nav-list-item">New Topic</li>
             </Link>
         </ul>
     </div>
