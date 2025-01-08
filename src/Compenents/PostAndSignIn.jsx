@@ -7,7 +7,7 @@ import WriteNewArticleButton from "./WriteNewArticleButton";
 
 export default function PostAndSignIn() {
   const { user } = useContext(UserContext)
-  if (!user) {
+  if (Object.keys(user).length === 0) {
     return (
       <div className="post-sign-buttons">
         <WriteNewArticleButton />
