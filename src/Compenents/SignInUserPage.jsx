@@ -1,13 +1,16 @@
 import SignInForm from "./SignInForm";
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { getUsers } from "../api"
 import "../CSS/loader.css"
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { UserContext } from "../Contexts/UserContext.jsx";
 
 export default function SignInUserPage() {
   const [users, setUsers] = useState([])
   const [isErr, setIsErr] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
+  const { setUser } = useContext(UserContext)
+  const navigate = useNavigate()
 
   useEffect(() => {
     getUsers()
@@ -15,6 +18,7 @@ export default function SignInUserPage() {
         setUsers(response)
       })
       .catch((err) => {
+        setIsErr(true)
         console.log(err)
       })
       .finally(() => {
@@ -22,9 +26,25 @@ export default function SignInUserPage() {
       })
   }, [])
 
+  function handleSignIn(userObj) {
+    setUser(userObj)
+    navigate("/")
+  }
+
   if (isLoading) {
     return (
       <span className="loader"></span>
+    )
+  }
+
+  if (isErr) {
+    return (
+      <>
+      <h2>Could not load users. Please refresh to try again or create a new account</h2>
+      <Link to="/sign-in-form">
+      <button>Create New User</button>
+      </Link>
+      </>
     )
   }
 
@@ -33,7 +53,7 @@ export default function SignInUserPage() {
       <h2>Users</h2>
       {users.map((user, index) => {
         return (
-          <div key={index}>
+          <div key={index} onClick={() => handleSignIn(user)}>
             <img src={user.avatar_url}/>
             <h3>{user.username}</h3>
           </div>
