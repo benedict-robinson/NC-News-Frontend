@@ -5,10 +5,10 @@ import Topics from './Topics'
 import SignInUserPage from './SignInUserPage';
 import UserPage from './UserPage';
 import ArticlesByTopic from './ArticlesByTopic';
-import { useState } from 'react';
 import NewTopic from './NewTopic';
 import ErrorHandle from './ErrorHandle';
 import NewArticle from './NewArticle';
+import SignInForm from './SignInForm.jsx';
 
 export default function StateManager() {
   
@@ -20,6 +20,7 @@ export default function StateManager() {
         <Route path="/topics" element={<Topics />} />
         <Route path={`/articles/:article_id`} element={<ArticlePage />}/>
         <Route path="/sign-in" element={<SignInUserPage />}/>
+        <Route path="/sign-in-form" element={<SignInForm />}/>
         <Route path="/user" element={<UserPage />}/>
         <Route path="/newtopic" element={<NewTopic />}/>
         <Route path="/:topic_slug/articles" element={<ArticlesByTopic />}/>

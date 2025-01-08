@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react"
 import { getUsers, patchUser } from "../api"
 import "../CSS/user-page-buttons.css"
+import { useNavigate } from "react-router-dom"
 
 export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setUser, setErrMsg }) {
   const [oldUser, setOldUser] = useState({})
+  const navigate = useNavigate()
 
   useEffect(() => {
     setOldUser({...user})
@@ -27,7 +29,8 @@ export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setU
   }
 
   function signOut() {
-    console.log("working - signOut")
+    setUser({})
+    navigate("/sign-in")
   }
 
   return (

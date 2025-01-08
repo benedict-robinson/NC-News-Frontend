@@ -1,11 +1,12 @@
 import { useEffect, useState, useContext } from "react"
-import { getTopics, postArticle, postNewTopic } from "../api"
+import { getTopics, postArticle } from "../api"
 import { UserContext } from "../Contexts/UserContext"
 import ArticlePostedAlert from "./ArticlePostedAlert"
 import { useLocation } from "react-router-dom"
 import "../CSS/post-article-button.css"
 
 export default function NewArticle(props) {
+    console.log(props)
     const location = useLocation()
     const { topic } = location.state || ""
     const [topics, setTopics] = useState([])
