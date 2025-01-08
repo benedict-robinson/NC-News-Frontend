@@ -1,13 +1,11 @@
 import ArticlesList from "./ArticlesList";
 import "../CSS/loader.css"
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { fetchArticles } from "../api";
 import { useSearchParams } from "react-router-dom";
 import SortBy from "./SortBy"
-import { UserContext } from "../Contexts/UserContext.jsx";
 
 export default function Home() {
-  const { user } = useContext(UserContext)
   const [isLoading, setIsLoading] = useState(true)
   const [searchParams] = useSearchParams()
   const sortByQuery = searchParams.get("sort_by")

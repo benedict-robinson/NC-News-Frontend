@@ -5,13 +5,13 @@ export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
   const name = localStorage.getItem("name") || "tickle122"
-  
+
   const [user, setNewUser] = useState({});
   useEffect(() => {
-    getUsers().then((response) => {
-      const [currentUser] = response.filter(e => e.username === name)
-      setUser(currentUser)
-    })
+      getUsers().then((response) => {
+        const [currentUser] = response.filter(e => e.username === name)
+        setUser(currentUser)
+      })
   }, [name])
 
   const setUser = (newUser) => {

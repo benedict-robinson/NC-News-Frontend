@@ -5,8 +5,7 @@ import ArticlePostedAlert from "./ArticlePostedAlert"
 import { useLocation } from "react-router-dom"
 import "../CSS/post-article-button.css"
 
-export default function NewArticle(props) {
-    console.log(props)
+export default function NewArticle() {
     const location = useLocation()
     const { topic } = location.state || ""
     const [topics, setTopics] = useState([])
@@ -111,7 +110,7 @@ export default function NewArticle(props) {
                 )}
                 <br />
             </form>
-            <button id="post-article-button" onClick={handleSubmit} disabled={!newArticle.title || !newArticle.body || !newArticle.topic}>Post</button>
+            {user.username === "not-a-username" ? <h3>You need to sign in to post an article</h3> : <button id="post-article-button" onClick={handleSubmit} disabled={!newArticle.title || !newArticle.body || !newArticle.topic}>Post</button>}
         </section>
     )
 }

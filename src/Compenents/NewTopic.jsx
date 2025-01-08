@@ -45,7 +45,7 @@ export default function NewTopic() {
                     <input type="text" id="description" onChange={handleChange}></input>
                 </div>
                 <br></br>
-                <button id="new-topic-button" onClick={handleSubmit} disabled={!topicObj.slug}>Create</button>
+                {user.username === "not-a-username" ? <h3>You need to sign in to create a topic</h3> : <button id="new-topic-button" onClick={handleSubmit} disabled={!topicObj.slug}>Create</button>}
             </form>
             <p>{errMsg}</p>
         </div>

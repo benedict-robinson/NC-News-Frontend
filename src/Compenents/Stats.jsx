@@ -1,5 +1,6 @@
 
 export default function Stats({userArticles, articleVotes, userComments, commentVotes}) {
+
   return (
     <div className="stats">
             <h3>Stats</h3>
