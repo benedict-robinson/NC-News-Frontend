@@ -8,13 +8,15 @@ import SortBy from "./SortBy"
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true)
   const [searchParams] = useSearchParams()
-  const sortByQuery = searchParams.get("sort_by")
-  const orderQuery = searchParams.get("order")
-  const query = `?${sortByQuery ? `sort_by=${sortByQuery}` : `order=${orderQuery}`}${sortByQuery && orderQuery ? `&order=${orderQuery}` : ""}`
+  const sortByQuery = searchParams.get("sort_by") ? `sort_by=${searchParams.get("sort_by")}` : ""
+  const orderQuery = searchParams.get("order") ? `order=${searchParams.get("order")}` : ""
+  const searchTerm = searchParams.get("search")
+  const searchQuery = searchTerm ? `search=${searchTerm}` : ""
+  const query = queryMaker(searchQuery, sortByQuery, orderQuery)
   
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-          fetchArticles(sortByQuery || orderQuery ? query : "").then((response) => {
+          fetchArticles(query).then((response) => {
               setArticles(response)
           })
           .catch((err) => {
@@ -36,7 +38,17 @@ export default function Home() {
       <div className="sticky-bar">
         <SortBy />
       </div>
-    <ArticlesList articles={articles}/>
+    <ArticlesList articles={articles} searchTerm={searchTerm}/>
     </section>
   )
+}
+
+
+function queryMaker(a = "", b = "", c ="") {
+  const query = `?${a}${a ? "&" : ""}${b}${b ? "&" : ""}${c}`
+  if (query === "?") return ""
+  if (query[query.length - 1] === "&") {
+    return query.slice(0, -1)
+  }
+  return query
 }

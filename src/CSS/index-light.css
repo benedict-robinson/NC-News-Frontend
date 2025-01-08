@@ -128,13 +128,21 @@ select option:checked {
     opacity: 0;
   }
 }
-
+.search-bar {
+  display: flex;
+  justify-content: flex-end;
+  /* border: 2px solid; */
+  height: 20px;
+}
 .top-bar {
+  /* border: 2px solid; */
+  height: 70px;
   grid-column: 1/4;
   grid-row: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-bottom: 12px;
   border-bottom: 5px solid;
 }
 

@@ -3,6 +3,7 @@ import PostAndSignIn from './Compenents/PostAndSignIn'
 import NavBar from './Compenents/NavBar'
 import RouteManager from './Compenents/RouteManager'
 import { useEffect, useState } from 'react';
+import SearchBar from './Compenents/SearchBar.jsx';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
   if (isDesktop) {
     return (
       <>
+      <SearchBar />
       <div className='top-bar'>
         <Header />
       <div className="navBar">
@@ -38,6 +40,7 @@ function App() {
 
   return (
     <>
+    <SearchBar />
     <div className='top-bar'>
       <Header />
       <PostAndSignIn />
