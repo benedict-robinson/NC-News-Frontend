@@ -1,6 +1,6 @@
 import { useContext, useState, useEffect } from "react"
 import { UserContext } from "../Contexts/UserContext"
-import { fetchArticles, fetchCommentsByUsername, getUsers, patchUser } from "../api"
+import { fetchArticles, fetchCommentsByUsername } from "../api"
 import ArticleCard from "./ArticleCard"
 import "../CSS/loader.css"
 import UserEditAndSignOut from "./UserEditAndSignOut"

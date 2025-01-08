@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { getUsers, patchUser } from "../api"
+import { patchUser } from "../api"
 import "../CSS/user-page-buttons.css"
 import { useNavigate } from "react-router-dom"
 
@@ -29,7 +29,7 @@ export default function UserEditAndSignOut({ isEditing, setIsEditing, user, setU
   }
 
   function signOut() {
-    setUser({})
+    setUser({username: "not-a-username"})
     navigate("/sign-in")
   }
 
