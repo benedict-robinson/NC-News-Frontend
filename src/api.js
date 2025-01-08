@@ -117,6 +117,13 @@ function getUsers() {
     })
 }
 
+function postUser(userObj) {
+    return api.post("/users", userObj)
+    .then(({data}) => {
+        return data.user
+    })
+}
+
 export {
     fetchArticles,
     fecthArticleById,
@@ -133,5 +140,6 @@ export {
     deleteArticle,
     fetchCommentsByUsername,
     patchUser,
-    getUsers
+    getUsers,
+    postUser
 }

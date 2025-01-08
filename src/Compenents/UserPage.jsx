@@ -27,7 +27,7 @@ export default function UserPage() {
   useEffect(() => {
     fetchCommentsByUsername(user.username)
       .then(({ comments }) => {
-        setUserComments(comments)
+        setUserComments(comments || [])
         setCommentsErr(false)
       })
       .catch((err) => {
