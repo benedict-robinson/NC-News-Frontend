@@ -48,11 +48,11 @@ export default function SignInUserPage() {
   }
 
   return (
-    <div>
+    <div className="users-container">
       <h2>Users</h2>
       {users.map((user, index) => {
         return (
-          <div key={index} onClick={() => handleSignIn(user)}>
+          <div className="user-card" key={index} onClick={() => handleSignIn(user)}>
             <img src={user.avatar_url}/>
             <h3>{user.username}</h3>
           </div>
