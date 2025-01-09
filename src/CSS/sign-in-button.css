@@ -1,0 +1,6 @@
+#sign-in-button {
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+    margin: 2px;
+    height: 2em;
+}
