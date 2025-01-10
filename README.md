@@ -1,6 +1,5 @@
 # Northcoders News API
 
-***Notice: This project is currently undergoing a re-design. While some elements may not be in their final state, all pages and functionality are fully accessible and available for exploration. Feedback and contributions are welcome during this process!***
 
 **Hello, Welcome to the NC-News Frontend Web Application repository!** 
 
