@@ -2,7 +2,7 @@ import { useSearchParams } from "react-router-dom"
 import "../CSS/sortcontrols.css"
 import { useEffect, useState } from "react"
 
-export default function SortBy() {
+export default function SortBy({ searchTerm }) {
   const [searchParams, setSearchParams] = useSearchParams()
   const [selectValue, setSelectValue] = useState(localStorage.getItem("selectValue") ? localStorage.getItem("selectValue") : "")
 
@@ -33,11 +33,11 @@ export default function SortBy() {
         {isWide ? <label>Sorted by:&nbsp; </label> : <></>}
         <select value={selectValue} onChange={handleChange}>
             <option value={""}>Newest</option>
-            <option value={"?order=asc"}>Oldest</option>
-            <option value={"?sort_by=votes"}>Most Votes</option>
-            <option value={"?sort_by=votes&order=asc"}>Least Votes</option>
-            <option value={"?sort_by=comment_count&order=desc"}>Most Comments</option>
-            <option value={"?sort_by=comment_count"}>Least Comments</option>
+            <option value={`?${searchTerm ? `search=${searchTerm}&` : ""}order=asc`}>Oldest</option>
+            <option value={`?${searchTerm ? `search=${searchTerm}&` : ""}sort_by=votes`}>Most Votes</option>
+            <option value={`?${searchTerm ? `search=${searchTerm}&` : ""}sort_by=votes&order=asc`}>Least Votes</option>
+            <option value={`?${searchTerm ? `search=${searchTerm}&` : ""}sort_by=comment_count&order=desc`}>Most Comments</option>
+            <option value={`?${searchTerm ? `search=${searchTerm}&` : ""}sort_by=comment_count`}>Least Comments</option>
         </select>
     </div>
     </div>

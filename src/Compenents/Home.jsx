@@ -16,6 +16,7 @@ export default function Home() {
   
   const [articles, setArticles] = useState([]);
   useEffect(() => {
+    console.log(searchTerm)
           fetchArticles(query).then((response) => {
               setArticles(response)
           })
@@ -36,7 +37,7 @@ export default function Home() {
   return (
     <section>
       <div className="sticky-bar">
-        <SortBy />
+        <SortBy searchTerm={searchTerm}/>
       </div>
     <ArticlesList articles={articles} searchTerm={searchTerm}/>
     </section>
