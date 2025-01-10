@@ -270,7 +270,7 @@ body.dark #article-subtitle {
 }
 .sort-container {
   position: absolute;
-  top: 25%;
+  top: 120px;
   right: 0;
   display: flex;
   justify-content: flex-end;
@@ -280,16 +280,14 @@ body.dark #article-subtitle {
   width: 70%;
   z-index: 1000;
 }
-#topic-title {
-  width: 25%;
+.topic-titles {
+  display: flex;
+  flex-direction: column;
+  width: 250px;
   position: absolute;
-  left: 30;
-  top: 120px;
-  z-index: 1000;
 }
-#topic-desc {
-  margin-top: 40px;
-  width: 20%;
+#topic-title, #topic-desc {
+  margin: 0;
 }
 .article-page {
   padding-left: 70px;

@@ -1,4 +1,4 @@
-import { Link, useParams, useSearchParams } from "react-router-dom"
+import { useParams, useSearchParams } from "react-router-dom"
 import { fetchArticlesByTopic, getTopics } from "../api"
 import { useEffect, useState } from "react"
 import ArticlesList from "./ArticlesList"
@@ -72,8 +72,10 @@ export default function ArticlesByTopic() {
 
     return (
         <section>
+            <div className="topic-titles">
             <h2 id="topic-title" >{topicTitle} Articles</h2>
             <p id="topic-desc" >{currTopic[0].description}</p>
+            </div>
             <div className="sticky-bar">
                 <SortBy />
             </div>
