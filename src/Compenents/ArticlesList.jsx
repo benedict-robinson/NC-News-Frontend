@@ -1,6 +1,4 @@
-
 import ArticleCard from "./ArticleCard"
-
 
 export default function ArticlesList({articles, searchTerm}) {
   if (articles.length === 0) {

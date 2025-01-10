@@ -1,7 +1,7 @@
 .sort-controls {
     justify-content: right;
     margin: 5px;
-    margin-right: 35%;
+    /* margin-right: 35%; */
     align-self: flex-start;
 }
 

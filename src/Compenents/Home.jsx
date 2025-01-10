@@ -16,7 +16,6 @@ export default function Home() {
   
   const [articles, setArticles] = useState([]);
   useEffect(() => {
-    console.log(searchTerm)
           fetchArticles(query).then((response) => {
               setArticles(response)
           })
