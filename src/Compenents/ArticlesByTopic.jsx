@@ -16,6 +16,19 @@ export default function ArticlesByTopic() {
     const [slugs, setSlugs] = useState([])
     const [isLoading, setIsLoading] = useState(true)
     const [currTopic, setCurrTopic] = useState([])
+    const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1400);
+    const [isTablet, setIsTablet] = useState(false)
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsDesktop(window.innerWidth >= 1100);
+            setIsTablet(window.innerWidth <=900)
+        };
+
+        window.addEventListener("resize", handleResize);
+
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
 
     const query = `&${sortByQuery ? `sort_by=${sortByQuery}` : `order=${orderQuery}`}${sortByQuery && orderQuery ? `&order=${orderQuery}` : ""}`
 
@@ -64,7 +77,7 @@ export default function ArticlesByTopic() {
             <div>
                 <h2>{topicTitle} Articles</h2>
                 <p>Seems a little quiet over here. Go to &nbsp;
-                    <WriteNewArticleButton topic={topic_slug}/>
+                    <WriteNewArticleButton topic={topic_slug} />
                     &nbsp; to get this topic started</p>
             </div>
         )
@@ -73,13 +86,13 @@ export default function ArticlesByTopic() {
     return (
         <section>
             <div className="topic-titles">
-            <h2 id="topic-title" >{topicTitle} Articles</h2>
-            <p id="topic-desc" >{currTopic[0].description}</p>
+                {!isTablet ? <h2 id="topic-title" >{topicTitle} Articles</h2> : ""}
+                {isDesktop ? <p id="topic-desc" >{currTopic[0].description}</p> : <></>}
             </div>
             <div className="sticky-bar">
                 <SortBy />
             </div>
-            <ArticlesList articles={articlesByTopic} />
+            <ArticlesList articles={articlesByTopic} topic={topicTitle} isTablet={isTablet}/>
         </section>
     )
 }

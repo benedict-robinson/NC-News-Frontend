@@ -167,7 +167,7 @@ body.dark #user-image {
   background-color: whitesmoke;
 }
 
-.navBar {
+.navBar-container {
   grid-column: 1 / 4;
   grid-row: 2;
   width: 60%;
@@ -506,8 +506,13 @@ form {
 }
 
 @media (max-width: 1100px) {
+  .navBar-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
   .navBar {
-    width: 90%;
+    width: 60%;
   }
   .navBar ul {
     display: flex; 
@@ -540,16 +545,10 @@ form {
     box-shadow: 8px 4px 8px rgba(0, 0, 0, 0.1);
     transition: all 0.1s ease-in-out;
   }
-  #topic-title {
-    width: 30%;
+  .topic-titles {
+    width: 40px;
     position: absolute;
-    left: 30;
-    top: 180px;
-    z-index: 1000;
-  }
-  #topic-desc {
-    margin-top: 45px;
-    width: 40%;
+    top: 120px;
   }
 }
 
