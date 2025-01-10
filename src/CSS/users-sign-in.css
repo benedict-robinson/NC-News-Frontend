@@ -1,0 +1,141 @@
+.sign-in-container {
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    background-color: #eaeaea;
+    border-radius: 12px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.users-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    width: 90%;
+    justify-content: center;
+    background-color: #ffffff;
+    border-radius: 12px;
+    padding: 25px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.user-card {
+    border: 2px solid #ccc;
+    width: 160px;
+    padding: 15px;
+    border-radius: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.user-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.user-card img {
+    border: 3px solid #ccc;
+    height: 160px;
+    width: 160px;
+    border-radius: 50%;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.user-card h3 {
+    border: 1px solid #ccc;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #555;
+    font-size: 1rem;
+    text-align: center;
+}
+
+#create-user-button {
+    margin: 20px;
+    margin-top: 50px;
+    align-self: center;
+    border-radius: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    outline: none;
+    overflow: visible;
+    padding: 0.3em 1em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-transform: none;
+    transition: all 0.3s ease-in-out;
+    user-select: none;
+    font-size: 20px;
+    width: 200px;
+    height: 65px;
+    box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
+  }
+  
+  #create-user-button .text {
+    line-height: 1.33333em;
+    padding-left: 2em;
+    display: block;
+    text-align: left;
+    transition: all 0.3s ease-in-out;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  
+  #create-user-button .top-key {
+    height: 2px;
+    width: 1.5625rem;
+    top: -2px;
+    left: 0.625rem;
+    position: absolute;
+    background: #e8e8e8;
+    transition:
+      width 0.5s ease-out,
+      left 0.3s ease-out;
+  }
+  
+  #create-user-button .bottom-key-1 {
+    height: 2px;
+    width: 1.5625rem;
+    right: 1.875rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition:
+      width 0.5s ease-out,
+      right 0.3s ease-out;
+  }
+  
+  #create-user-button .bottom-key-2 {
+    height: 2px;
+    width: 0.625rem;
+    right: 0.625rem;
+    bottom: -2px;
+    position: absolute;
+    background: #e8e8e8;
+    transition:
+      width 0.5s ease-out,
+      right 0.3s ease-out;
+  }
+  
+  #create-user-button:hover .top-key {
+    left: -2px;
+    width: 0px;
+  }
+  
+  #create-user-button:hover .bottom-key-1,
+  #create-user-button:hover .bottom-key-2 {
+    right: 0;
+    width: 0;
+  }
+

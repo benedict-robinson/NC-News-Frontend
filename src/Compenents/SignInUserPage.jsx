@@ -3,6 +3,7 @@ import { getUsers } from "../api"
 import "../CSS/loader.css"
 import { Link, useNavigate } from "react-router-dom";
 import { UserContext } from "../Contexts/UserContext.jsx";
+import "../CSS/users-sign-in.css"
 
 export default function SignInUserPage() {
   const [users, setUsers] = useState([])
@@ -48,8 +49,9 @@ export default function SignInUserPage() {
   }
 
   return (
-    <div className="users-container">
+    <div className="sign-in-container">
       <h2>Users</h2>
+    <div className="users-container">
       {users.map((user, index) => {
         return (
           <div className="user-card" key={index} onClick={() => handleSignIn(user)}>
@@ -58,8 +60,9 @@ export default function SignInUserPage() {
           </div>
         )
       })}
+      </div>
       <Link to="/sign-in-form">
-      <button>Create New User</button>
+      <button id="create-user-button">Create New User</button>
       </Link>
     </div>
   )
