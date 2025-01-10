@@ -45,7 +45,7 @@ function App() {
       <Header />
       <PostAndSignIn />
     </div>
-    <div className="navBar">
+    <div className="navBar-container">
     <NavBar />
     </div>
     
