@@ -1,4 +1,5 @@
-.sign-in-container {
+.sign-in-form-container {
+    padding: 20px;
     display: flex;
     height: 100vh;
     flex-direction: column;
@@ -7,62 +8,21 @@
     border-radius: 12px;
     box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
 }
-body.dark .sign-in-container {
-  background-color: grey;
+body.dark .sign-in-form-container {
+    background-color: transparent;
 }
 
-.users-container {
+.sign-in-form-container form {
     display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    width: 90%;
-    justify-content: center;
-    background-color: #ffffff;
-    border-radius: 12px;
-    padding: 25px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-}
-
-.user-card {
-    border: 2px solid #ccc;
-    width: 160px;
-    padding: 15px;
-    border-radius: 20%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(to bottom, #f9f9f9, #eaeaea);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
-.user-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+.sign-in-form-container input {
+    width: 45%;
+    margin: 5px;
 }
-
-.user-card img {
-    border: 3px solid #ccc;
-    height: 160px;
-    width: 160px;
-    border-radius: 50%;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.user-card h3 {
-    border: 1px solid #ccc;
-    padding: 5px;
-    border-radius: 8px;
-    background-color: #ffffff;
-    color: #555;
-    font-size: 1rem;
-    text-align: center;
-}
-
-#create-user-button {
+.sign-in-form-container button {
     margin: 20px;
-    margin-top: 50px;
     align-self: center;
     border-radius: 8px;
     box-sizing: border-box;
@@ -85,7 +45,7 @@ body.dark .sign-in-container {
     box-shadow: 2px 4px 6px rgba(0, 0, 0, 0.2);
   }
   
-  #create-user-button .text {
+  .sign-in-form-container button .text {
     line-height: 1.33333em;
     padding-left: 2em;
     display: block;
@@ -95,7 +55,7 @@ body.dark .sign-in-container {
     text-decoration: none;
   }
   
-  #create-user-button .top-key {
+  .sign-in-form-container button .top-key {
     height: 2px;
     width: 1.5625rem;
     top: -2px;
@@ -107,7 +67,7 @@ body.dark .sign-in-container {
       left 0.3s ease-out;
   }
   
-  #create-user-button .bottom-key-1 {
+  .sign-in-form-container button .bottom-key-1 {
     height: 2px;
     width: 1.5625rem;
     right: 1.875rem;
@@ -119,7 +79,7 @@ body.dark .sign-in-container {
       right 0.3s ease-out;
   }
   
-  #create-user-button .bottom-key-2 {
+  .sign-in-form-container button .bottom-key-2 {
     height: 2px;
     width: 0.625rem;
     right: 0.625rem;
@@ -131,14 +91,28 @@ body.dark .sign-in-container {
       right 0.3s ease-out;
   }
   
-  #create-user-button:hover .top-key {
+  .sign-in-form-container button:hover .top-key {
     left: -2px;
     width: 0px;
   }
   
-  #create-user-button:hover .bottom-key-1,
-  #create-user-button:hover .bottom-key-2 {
+  .sign-in-form-container button:hover .bottom-key-1,
+  .sign-in-form-container button:hover .bottom-key-2 {
     right: 0;
     width: 0;
   }
+
+
+  .sign-in-form-container button:disabled {
+    background-color: #e0e0e0; 
+    color: #a0a0a0; 
+    border-color: #d0d0d0; 
+    cursor: not-allowed; 
+    box-shadow: none; 
+    opacity: 0.7; 
+}
+
+.sign-in-form-container button:disabled .text {
+    color: #a0a0a0; 
+}
 
