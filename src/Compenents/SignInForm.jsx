@@ -2,6 +2,7 @@ import { useContext, useState } from "react"
 import { postUser } from "../api.js"
 import { UserContext } from "../Contexts/UserContext.jsx"
 import { useNavigate } from "react-router-dom"
+import "../CSS/sign-in-form.css"
 
 export default function SignInForm() {
   const [newUser, setNewUser] = useState({})
@@ -47,12 +48,17 @@ export default function SignInForm() {
   }
 
   return (
-    <div>
+    <div className="sign-in-form-container">
       <form>
         <label>Create New User</label>
         <input type="text" id="username" placeholder="Username..." onChange={handleInput}></input><span>{usernameErr}</span>
         <input type="text" id="name" placeholder="Name..." onChange={handleInput}></input>
         <input type="file" id="avatar_url" accept="image/*" onChange={handleInput} />
+        {!newUser.avatar_url ? <></> : 
+        <div>
+        <h4>Image Preview:</h4>
+        <img src={newUser.avatar_url} alt="Preview" style={{ width: '100px' }} />
+    </div>}
       </form>
       <button onClick={handleSubmit} disabled={!newUser.username || !newUser.name}>Create User</button>
     </div>
